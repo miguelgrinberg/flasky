@@ -4,6 +4,7 @@ Flask-Login==0.2.7
 Flask-Mail==0.9.0
 Flask-Migrate==1.1.0
 Flask-Moment==0.2.1
+Flask-PageDown==0.1.4
 Flask-SQLAlchemy==1.0
 Flask-Script==0.6.6
 Flask-WTF==0.9.4
