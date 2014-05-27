@@ -5,7 +5,6 @@ from flask.ext.moment import Moment
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from flask.ext.pagedown import PageDown
-from config import config
 
 bootstrap = Bootstrap()
 mail = Mail()
@@ -20,6 +19,7 @@ login_manager.login_view = 'auth.login'
 
 def create_app(config_name):
     app = Flask(__name__)
+    from config import config
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
 
