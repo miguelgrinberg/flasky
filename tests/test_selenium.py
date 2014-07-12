@@ -44,13 +44,14 @@ class SeleniumTestCase(unittest.TestCase):
             db.session.commit()
 
             # start the Flask server in a thread
-            threading.Thread(target=cls.app.run).start()
+            t = threading.Thread(target=cls.app.run)
+            t.daemon = True
+            t.start()
 
     @classmethod
     def tearDownClass(cls):
         if cls.client:
             # stop the flask server and the browser
-            cls.client.get('http://localhost:5000/shutdown')
             cls.client.close()
 
             # destroy database
