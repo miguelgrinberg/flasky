@@ -11,7 +11,7 @@
             <div class="comment-author"><a href="{{ url_for('.user', username=comment.author.username) }}">{{ comment.author.username }}</a></div>
             <div class="comment-body">
                 {% if comment.disabled %}
-                <p></p><i>This comment has been disabled by a moderator.</i></p>
+                <p><i>This comment has been disabled by a moderator.</i></p>
                 {% endif %}
                 {% if moderate or not comment.disabled %}
                     {% if comment.body_html %}
