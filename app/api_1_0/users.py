@@ -19,10 +19,10 @@ def get_user_posts(id):
     posts = pagination.items
     prev = None
     if pagination.has_prev:
-        prev = url_for('api.get_posts', page=page-1, _external=True)
+        prev = url_for('api.get_user_posts', id=id, page=page-1, _external=True)
     next = None
     if pagination.has_next:
-        next = url_for('api.get_posts', page=page+1, _external=True)
+        next = url_for('api.get_user_posts', id=id, page=page+1, _external=True)
     return jsonify({
         'posts': [post.to_json() for post in posts],
         'prev': prev,
@@ -41,10 +41,12 @@ def get_user_followed_posts(id):
     posts = pagination.items
     prev = None
     if pagination.has_prev:
-        prev = url_for('api.get_posts', page=page-1, _external=True)
+        prev = url_for('api.get_user_followed_posts', id=id, page=page-1,
+                       _external=True)
     next = None
     if pagination.has_next:
-        next = url_for('api.get_posts', page=page+1, _external=True)
+        next = url_for('api.get_user_followed_posts', id=id, page=page+1,
+                       _external=True)
     return jsonify({
         'posts': [post.to_json() for post in posts],
         'prev': prev,
