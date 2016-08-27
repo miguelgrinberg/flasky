@@ -40,3 +40,9 @@ nosetests.xml
 
 # Virtual environment
 venv
+
+# pycharn file
+.idea
+
+#mitigration
+migrations

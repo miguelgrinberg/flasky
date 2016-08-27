@@ -20,10 +20,18 @@ class Config:
 
 
 class DevelopmentConfig(Config):
-    DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    # DEBUG = True
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    # Get application base dir.
+    _basedir = os.path.abspath(os.path.dirname(__file__))
 
+    DEBUG = True
+    RELOAD = True
+    SECRET_KEY = 'mysecretkeyvalue'
+
+    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:root@localhost:3307/charger?charset=utf8'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:admin@localhost:3306/easy_loan?charset=utf8'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 class TestingConfig(Config):
     TESTING = True
