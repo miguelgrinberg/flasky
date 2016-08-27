@@ -5,5 +5,6 @@
 {% block page_content %}
 <div class="page-header">
     <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+    <h1>主题内容填充</h1>
 </div>
 {% endblock %}

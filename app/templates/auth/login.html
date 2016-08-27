@@ -5,9 +5,10 @@
 
 {% block page_content %}
 <div class="page-header">
-    <h1>Login</h1>
+    <h1>登录</h1>
 </div>
 <div class="col-md-4">
     {{ wtf.quick_form(form) }}
+    <a href="{{ url_for('main.register') }}">注册</a>
 </div>
 {% endblock %}

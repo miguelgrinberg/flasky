@@ -13,7 +13,7 @@ def login():
         if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             return redirect(request.args.get('next') or url_for('main.index'))
-        flash('Invalid username or password.')
+        flash('手机号或密码无效')
     return render_template('auth/login.html', form=form)
 
 
@@ -21,5 +21,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('You have been logged out.')
+    flash('成功退出')
     return redirect(url_for('main.index'))
+
+

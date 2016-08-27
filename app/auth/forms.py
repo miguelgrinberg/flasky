@@ -5,15 +5,9 @@ from wtforms.validators import Required, Length
 
 class LoginForm(Form):
     # email = StringField('Email', validators=[Required(), Length(1, 64),Email()])
-    mobile = StringField('mobile', validators=[Required(), Length(11, 11)])
-    password = PasswordField('Password', validators=[Required()])
-    remember_me = BooleanField('Keep me logged in')
-    submit = SubmitField('Log In')
+    mobile = StringField('手机号', validators=[Required(), Length(11, 11)])
+    password = PasswordField('密码', validators=[Required()])
+    remember_me = BooleanField('记住密码')
+    submit = SubmitField('登录')
 
 
-class RegisterForm(Form):
-    mobile = StringField('mobile', validators=[Required(), Length(11, 11)])
-    password = PasswordField('Password', validators=[Required()])
-    password_repeat = PasswordField('Password repeat', validators=[Required()])
-    mobile_code = StringField('mobile_code', validators=[Required(), Length(1, 6)])
-    submit = SubmitField('Register In')
