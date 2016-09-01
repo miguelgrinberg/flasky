@@ -4,7 +4,34 @@
 
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
-    <h1>主题内容填充</h1>
+     <div class="top_bg">
+  		<div class="header">
+    		<div class="head_img">
+		        <img src="{{ url_for('static', filename='img/header_02.jpg') }}" width="960" height="409" alt="" class="clickImg">
+		        <img src="{{ url_for('static', filename='img/header_03.png') }}" width="960" height="396" alt="" class="clickImg">
+{#		        <img src="{{ url_for('static', filename='img/header_04.jpg') }}" width="960" height="204" alt="">#}
+		    </div>
+	    	<div class="btn0">
+	       		<a href="#anchor">
+	            	立即借款
+	        	</a>
+	    	</div>
+    	</div>
+	 </div>
+	 <div class="footer">
+     <p class="footer_cont "><a class="footer_link_a" href="" target="_blank"> 京ICP证150277号 </a>京ICP证150277号 京ICP备15002532号 CreditEase 2012-2015 宜人有限公司</p>
+     <p class="footer_banner ">
+        <a rel="nofollow" href="http://www.itrust.org.cn/yz/pjwx.asp?wm=1745462242" target="_blank">
+            <img width="121" height="47" src="https://www.yirendai.com/ccms/images/zzrz01.jpg" alt="中国互联网协会">
+        </a>
+        <!--把原来的动态加载可信网站资源改成点击时执行-->
+        <!--<script src="http://kxlogo.knet.cn/seallogo.dll?sn=e13010711010038449j2p4000000&size=0"></script>-->
+        <a rel="nofollow" href="https://ss.knet.cn/verifyseal.dll?sn=e13010711010038449j2p4000000&amp;ct=df&amp;a=1&amp;pa=2014" target="_blank"><img width="121" height="47" src="{{ url_for('static', filename='img/kxlogo.png') }}" alt="可信网站认证">
+        </a>
+        <a rel="nofollow" href="http://net.china.cn/chinese/index.htm" target="_blank">
+            <img width="121" height="47" src="https://www.yirendai.com/ccms/images/zzrz03.jpg" alt="不良信息举报中心">
+        </a>
+     </p>
+     </div>
 </div>
 {% endblock %}
