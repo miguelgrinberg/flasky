@@ -10,12 +10,12 @@ div.post-tabs {
 }
 ul.posts {
     list-style-type: none;
-    padding: 0px;
-    margin: 16px 0px 0px 0px;
+    padding: 0;
+    margin: 16px 0 0 0;
     border-top: 1px solid #e0e0e0;
 }
 div.post-tabs ul.posts {
-    margin: 0px;
+    margin: 0;
     border-top: none;
 }
 ul.posts li.post {
@@ -43,8 +43,8 @@ div.post-footer {
 }
 ul.comments {
     list-style-type: none;
-    padding: 0px;
-    margin: 16px 0px 0px 0px;
+    padding: 0;
+    margin: 16px 0 0 0;
 }
 ul.comments li.comment {
     margin-left: 32px;
@@ -71,16 +71,16 @@ div.comment-content {
     min-height: 48px;
 }
 div.comment-form {
-    margin: 16px 0px 16px 32px;
+    margin: 16px 0 16px 32px;
 }
 div.pagination {
     width: 100%;
     text-align: right;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 div.flask-pagedown-preview {
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
     border: 1px solid #e0e0e0;
     padding: 4px;
 }
