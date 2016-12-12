@@ -113,9 +113,11 @@ def password_reset_request():
                        'auth/email/reset_password',
                        user=user, token=token,
                        next=request.args.get('next'))
-        flash('An email with instructions to reset your password has been '
-              'sent to you.')
-        return redirect(url_for('auth.login'))
+            flash('An email with instructions to reset your password has been '
+                  'sent to you.')
+            return redirect(url_for('auth.login'))
+        else:
+            flash('Invalid email.')
     return render_template('auth/reset_password.html', form=form)
 
 
