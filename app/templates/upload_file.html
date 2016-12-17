@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Flasky - UpLoad{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>上传你的头像</h1>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		{% if current_user.avatar %}
+        	<img class="img-responsive" src="{{ current_user.avatar }}">
+    	{% else %}
+        	<img class="img-responsive" src="../static/avatar/default.jpeg">
+    	{% endif %}
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<form action="" method=post enctype=multipart/form-data>
+         	<input type=file name=file>
+         	<input type=submit value=上传>
+    	</form>
+	</div>
+</div>
+
+{% endblock %}

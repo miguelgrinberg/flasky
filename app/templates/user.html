@@ -4,6 +4,16 @@
 
 {% block page_content %}
 <div class="page-header">
+<div class="row">
+<div class="col-md-4">
+    {% if user.avatar %}
+        <img class="img-responsive" src="{{ user.avatar }}">
+    {% else %}
+        <img class="img-responsive" src="../static/avatar/default.jpeg">
+    {% endif %}
+</div>
+
+<div class="col-md-offset-4">
     <h1>{{ user.username }}</h1>
     {% if user.name or user.location %}
     <p>
@@ -20,11 +30,22 @@
     <p>Member since {{ moment(user.member_since).format('L') }}. Last seen {{ moment(user.last_seen).fromNow() }}.</p>
     <p>
         {% if user == current_user %}
-        <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>
+        <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">编辑资料</a>
         {% endif %}
         {% if current_user.is_administrator() %}
-        <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit Profile [Admin]</a>
+        <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">编辑资料 [管理员]</a>
         {% endif %}
     </p>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <a class="btn btn-default" href="{{ url_for('.upload_file') }}">更改头像</a>
+    
+    </div>
+</div>
+
 </div>
 {% endblock %}

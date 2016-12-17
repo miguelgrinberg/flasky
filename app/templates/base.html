@@ -6,6 +6,15 @@
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+{%- block metas %}
+    <meta charset="utf-8">
+{%- endblock metas %}
+
+{%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+{%- endblock styles %}
 {% endblock %}
 
 {% block navbar %}
