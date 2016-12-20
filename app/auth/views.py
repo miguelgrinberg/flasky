@@ -1,3 +1,9 @@
+#-*-coding:utf-8-*-
+import sys
+reload(sys) # Python2.5 初始化后会删除 sys.setdefaultencoding 这个方法，我们需要重新载入
+sys.setdefaultencoding('utf-8')
+###########显示个中文真难啊。。。
+
 from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user, login_required, \
     current_user
@@ -25,7 +31,7 @@ def unconfirmed():
         return redirect(url_for('main.index'))
     return render_template('auth/unconfirmed.html')
 
-
+#转移到了main中
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()

@@ -8,17 +8,17 @@
 </div>
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-offset-4 col-md-4">
 		{% if current_user.avatar %}
-        	<img class="img-responsive" src="{{ current_user.avatar }}">
+        	<img class="img-responsive" src="{{ current_user.avatar }}" width="304" height="228">
     	{% else %}
-        	<img class="img-responsive" src="../static/avatar/default.jpeg">
+        	<img class="img-responsive" src="../static/avatar/default.jpeg" width="304" height="228">
     	{% endif %}
 	</div>
 </div>
-
+<br>
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-offset-4 col-md-4">
 		<form action="" method=post enctype=multipart/form-data>
          	<input type=file name=file>
          	<input type=submit value=上传>

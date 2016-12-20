@@ -7,9 +7,9 @@
 <div class="row">
 <div class="col-md-4">
     {% if user.avatar %}
-        <img class="img-responsive" src="{{ user.avatar }}">
+        <img class="img-responsive" src="{{ user.avatar }}" width="304" height="228">
     {% else %}
-        <img class="img-responsive" src="../static/avatar/default.jpeg">
+        <img class="img-responsive" src="../static/avatar/default.jpeg" width="304" height="228">
     {% endif %}
 </div>
 
@@ -30,7 +30,7 @@
     <p>Member since {{ moment(user.member_since).format('L') }}. Last seen {{ moment(user.last_seen).fromNow() }}.</p>
     <p>
         {% if user == current_user %}
-        <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">编辑资料</a>
+        <a class="btn btn-default" href="{{ url_for('.edit_profile', nickname=user.username) }}">编辑资料</a>
         {% endif %}
         {% if current_user.is_administrator() %}
         <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">编辑资料 [管理员]</a>
@@ -39,13 +39,7 @@
 </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        
-        <a class="btn btn-default" href="{{ url_for('.upload_file') }}">更改头像</a>
-    
-    </div>
-</div>
+
 
 </div>
 {% endblock %}

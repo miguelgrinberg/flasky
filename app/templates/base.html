@@ -1,24 +1,27 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}学生信息管理系统{% endblock %}
 
 {% block head %}
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
-{%- block metas %}
-    <meta charset="utf-8">
-{%- endblock metas %}
+{% block metas %}
+{{ super() }}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% endblock metas %}
 
-{%- block styles %}
-    <!-- Bootstrap -->
-    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
-{%- endblock styles %}
-{% endblock %}
+{% block styles %}
+<link href="{{ url_for('static', filename='bootswatch.css') }}" rel="stylesheet" integrity="sha384-zF4BRsG/fLiTGfR9QL82DrilZxrwgY/+du4p/c7J72zZj+FLYq4zY00RylP9ZjiT" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
+{% endblock styles %}
+{% endblock head %}
 
+{% block body %}
 {% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-default topnav" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,33 +30,94 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url_for('main.index') }}">Flasky</a>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}" id="brand">湖南师范大学</a>
         </div>
-        <div class="navbar-collapse collapse">
+
+    <!-- 登陆后可以看到的导航栏 -->
+        {% if current_user.is_authenticated %}
+        <div class="collapse navbar-collapse ">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('main.index') }}">Home</a></li>
-                {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
-                {% endif %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        网上选课<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">16-17第二学期选课</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        活动报名<b class="caret"></b>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        教学质量评价<b class="caret"></b>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        信息维护<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}" id="666">个人信息</a></li>
+                        <li><a href="{{ url_for('auth.change_password') }}">密码修改</a></li>
+                        <li><a href="{{ url_for('main.edit_profile', nickname=current_user.username) }}">个人信息申请修改</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        信息查询<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">学生个人课表</a></li>
+                        <li><a href="#">在校成绩查询</a></li>
+                        <li><a href="#">等级考试成绩查询</a></li>
+                        <li><a href="#">培养计划</a></li>
+                        <li><a href="#">当前选课情况查询</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        补办学生证申请<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">补办学生证申请</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        补考网上报名<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">补考网上报名</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> 账户 <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
-                        <li><a href="{{ url_for('auth.change_email_request') }}">Change Email</a></li>
-                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                        <li><a href="{{ url_for('auth.change_password') }}">更改密码</a></li>
+                        <li><a href="{{ url_for('auth.change_email_request') }}">更改邮箱</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">安全退出</a></li>
                     </ul>
                 </li>
                 {% else %}
-                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                <li><a href="{{ url_for('auth.login') }}"><span class="glyphicon glyphicon-user"></span> 登陆 </a></li>
                 {% endif %}
             </ul>
         </div>
+    <!-- 登陆后可以看到的导航栏 -->
+        {% else %}
+        <div>
+            <p class="navbar-text">学生信息管理系统</p>
+        </div>
+        {% endif %}
     </div>
-</div>
-{% endblock %}
+</nav>
+{% endblock navbar %}
 
 {% block content %}
 <div class="container">
@@ -66,9 +130,42 @@
 
     {% block page_content %}{% endblock %}
 </div>
+{% endblock content %}
+
+{% block footer %}
+<footer>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<ul class="list-inline">
+					<li>
+						<a href="#">主页</a>
+					</li>
+					<li class="footer-menu-divider">&sdot;</li>
+					<li>
+                            <a href="#about">关于</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#portfolio">购买</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">联系</a>
+                        </li>
+                        <li>
+                            <a href="http://flask.pocoo.org/"><img src="http://flask.pocoo.org/static/badges/powered-by-flask-s.png" border="0" alt="powered by Flask" title="powered by Flask"></a>
+                        </li>
+				</ul>
+				<p class="copyright text-muted small">北京市顺义区林河工业开发区顺通路18号 京ICP备05030295号 京公网安备110401000066号 Copyright &copy; 2009-2016 BEIJING HYUNDAI MOTOR COMPANY Corporation,All Rights Reserved</p>
+			</div>
+		</div>
+	</div>
+</footer>
+{% endblock %}
 {% endblock %}
 
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
-{% endblock %}
+{% endblock scripts %}

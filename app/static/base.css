@@ -1,0 +1,54 @@
+/* 下拉菜单 */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* 导航hover */
+#brand:hover,
+#brand:focus,
+.topnav ul.navbar-nav > li > a:hover,
+.topnav ul.navbar-nav > li > a:focus
+{
+	background: rgba(255,255,255,0.5);
+	color: #000;
+	transition: 0.5s;
+}
+
+/* 二级菜单hover */
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus
+{
+	background: #1b6d85;
+	color: white;
+	transition: 0.5s;
+}
+
+/* 按钮特效 */
+.btn:hover{
+	color: #fff;
+	border: 2px outset rgba(0,0,0,0.9);
+	background: rgba(0,0,0,0.9);
+	transform: scale(1.1);
+	transition: 0.2s;
+	text-shadow: 1px 1px 1px rgba(0,0,0, 20);
+  	box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+  	letter-spacing: 2px;
+}
+
+
+/*footer{
+	position: fixed ;
+	bottom: 0 ;
+}*/

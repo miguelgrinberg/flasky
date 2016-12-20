@@ -1,10 +1,22 @@
+#-*-coding:utf-8-*-
+import sys
+reload(sys) # Python2.5 初始化后会删除 sys.setdefaultencoding 这个方法，我们需要重新载入
+sys.setdefaultencoding('utf-8')
+###########显示个中文真难啊。。。
+
 from flask_wtf import Form
 from wtforms import StringField, TextAreaField, BooleanField, SelectField,\
-    SubmitField, FileField
+    SubmitField, FileField, PasswordField
 from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError
 from ..models import Role, User
 
+class LoginForm(Form):
+    email = StringField('邮箱', validators=[Required(), Length(1, 64),
+                                             Email()])
+    password = PasswordField('密码', validators=[Required()])
+    remember_me = BooleanField('保持登陆')
+    submit = SubmitField('登陆')
 
 class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
@@ -12,10 +24,10 @@ class NameForm(Form):
 
 
 class EditProfileForm(Form):
-    name = StringField('Real name', validators=[Length(0, 64)])
-    location = StringField('Location', validators=[Length(0, 64)])
-    about_me = TextAreaField('About me')
-    submit = SubmitField('Submit')
+    name = StringField('真实姓名', validators=[Length(0, 64)])
+    location = StringField('居住地', validators=[Length(0, 64)])
+    about_me = TextAreaField('个人简介')
+    submit = SubmitField('提交')
 
 
 class EditProfileAdminForm(Form):

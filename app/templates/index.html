@@ -1,9 +1,66 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 
 {% block title %}Flasky{% endblock %}
 
 {% block page_content %}
+<!-- 欢迎，登陆页面 -->
 <div class="page-header">
-    <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+    <div class="jumbotron">
+        <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>你好,{% if current_user.is_authenticated %}{{ current_user.username }}{% else %}新同学{% endif %}!</h1>
+                <p>欢迎来到湖南师范大学学生信息管理系统</p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="http://www.hunnu.edu.cn/" target="_blank">
+                学校官网了解更多</a>
+                </p>
+                <a href="http://portals.zhihuishu.com/hunnu/shareCourse" target="_blank">智慧树网络课程</a>
+            </div>
+            {% if current_user.is_authenticated %}
+
+
+
+
+            {% else %}
+            <div class="col-md-4">
+                <fieldset>
+                {{ wtf.quick_form(form) }}
+                </fieldset>
+                <br>
+                <p><a href="{{ url_for('auth.password_reset_request') }}">忘记密码？</a>.</p>
+                <p>新同学? <a href="{{ url_for('auth.register') }}">立即注册</a>.</p>
+            </div>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- 最近通知 -->
+<div class="col-md-12">
+    <div data-spy="scroll" data-offset="0"
+	 style="height:200px;overflow:auto; position: relative;">
+	<h4>2016-2017第二学期选课时间：</h4>
+	<p>1.咸嘉湖校区本科生选课开始时间：12月17日（周六）18：30（仅限开设在咸嘉湖校区的课程）
+	</p>
+	<p>2.2013级本科生选课开始时间：12月18日（周日）8：30
+	</p>
+	<p>3.2014级本科生选课开始时间：12月18日（周日）18：30
+	</p>
+	<p>4.2015级本科生选课开始时间：12月19日（周一）18：30
+	</p>
+	<p>5.2016级本科生选课开始时间：12月20日（周二）18：30
+	</p>
+    <p>6.2013级师范生教师教育类选修课选课开始时间：12月21日（周三）18：00
+	</p>
+    <p>7.2014级师范生教师教育类选修课选课开始时间：12月22日（周四）18：00，其中，刘铁芳老师主讲的《教育哲学》将开展慕课教学试点，选修人数限40人，仅供2014级师范生选修。
+	</p>
+    <p>8.2015级师范生教师教育类选修课选课开始时间：12月23日（周五）18：00
+	</p>
+    <p>9.选课结束时间：12月25日（周日）18：00
+	</p>
+    </div>
 </div>
 {% endblock %}

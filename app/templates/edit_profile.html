@@ -7,7 +7,24 @@
 <div class="page-header">
     <h1>编辑你的资料</h1>
 </div>
-<div class="col-md-4">
-    {{ wtf.quick_form(form) }}
+<div class="row">
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-md-offset-2 col-md-4">
+        {% if user.avatar %}
+        <img class="img-responsive" src="{{ user.avatar }}" width="304" height="228">
+        {% else %}
+        <img class="img-responsive" src="../static/avatar/default.jpeg" width="304" height="228">
+        {% endif %}
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-default" href="{{ url_for('main.upload_file') }}">更改头像</a>
+
+        <a class="btn btn-default" href="{{ url_for('auth.change_email_request') }}">更改邮箱</a>
+    </div>
 </div>
+
+
+
 {% endblock %}
