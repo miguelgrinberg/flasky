@@ -18,6 +18,7 @@
 <link href="{{ url_for('static', filename='bootswatch.css') }}" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
 {% endblock styles %}
+
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
@@ -57,7 +58,7 @@ $(function() {
                         网上选课<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">16-17第二学期选课</a></li>
+                        <li><a href="{{ url_for('main.selectclass',username=current_user.username) }}">16-17第二学期选课</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

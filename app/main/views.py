@@ -3,9 +3,9 @@ from werkzeug import secure_filename
 from flask import render_template, redirect, url_for, abort, flash, request, current_app, send_from_directory
 from flask_login import login_required, current_user, login_user
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm, LoginForm
+from .forms import EditProfileForm, EditProfileAdminForm, LoginForm, SelectClassForm, isSelectClassForm
 from .. import db
-from ..models import Role, User
+from ..models import Role, User, Class, registrations
 from ..decorators import admin_required
 from ..checkname import allowed_file
 
@@ -101,10 +101,21 @@ def upload_file():
                 db.session.add(current_user)
                 flash('has been renew')            
                 return redirect(url_for('.user', username=current_user.username))
-
         return render_template('upload_file.html')
 
 
+@main.route('/selectclass/<username>/<cname>', methods=['GET','POST'])
+def selectclass(username,cname):
+    user = User.query.filter_by(username=username).first_or_404()
+    form = SelectClassForm()
+    form1 = isSelectClassForm()
+    classes = Class.query.all()
+    classesed = user.classes.all()
+    if form.validate_on_submit():
+        classeding = Class.query.filter_by(cname=cname)
+        user.classes.append(classeding)
+        return redirect(url_for('.selectclass',classes=classes, form=form, form1=form1, classesed=classesed))
+    return render_template('selectclass.html', classes=classes, form=form, form1=form1, classesed=classesed)
 
 
 

@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - class{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript">
+$(function() {
+    $("input[type='checkbox']").is(':checked');
+});
+</script>
+{% endblock %}
+
+{% block page_content %}
+
+<table class="table table-bordered table-hover">
+  <caption>可选课程</caption>
+  <thead>
+    <tr>
+      <th>选课</th>
+      <th>预定教材</th>
+      <th>课程名称</th>
+      <th>课程代码</th>
+      <th>教师姓名</th>
+      <th>上课时间</th>
+      <th>上课地点</th>
+      <th>学分</th>
+      <th>周学时</th>
+      <th>起始结束</th>
+      <th>容量</th>
+      <th>余量</th>
+      <th>课程归属</th>
+      <th>课程性质</th>
+      <th>校区代码</th>
+      <th>开课学院</th>
+      <th>考试时间</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for classe in classes %}<!-- 用一个for循环自动生成表格 -->
+    <tr>
+      <td>
+          {{ wtf.quick_form(form1) }}
+      </td>
+      <td>
+          <label>
+            <input type="checkbox">
+          </label>
+      </td>
+      <td>
+          {{ classe.name }}
+      </td>
+      <td>
+          {{ classe.id }}
+      </td>
+      <td>
+          {{ classe.tname }}
+      </td>
+      <td>
+          {{ classe.ctime }}
+      </td>
+      <td>
+          {{ classe.troom }}
+      </td>
+      <td>{{ classe.credit }}</td>
+      <td>{{ classe.chour }}</td>
+      <td>{{ classe.cweek }}</td>
+      <td>{{ classe.cquantity }}</td>
+      <td>{{ classe.cmargin }}</td>
+      <td>{{ classe.csource }}</td>
+      <td>{{ classe.cproperty }}</td>
+      <td>{{ classe.ccode }}</td>
+      <td>{{ classe.cacademy }}</td>
+      <td>{{ classe.cetime }}</td>
+    </tr>
+  {% endfor %}<!-- 结束for循环 -->
+  </tbody>
+</table>
+
+{{ wtf.quick_form(form) }}
+ <br>
+
+<table class="table table-bordered table-hover">
+  <caption>已选课程</caption>
+  <thead>
+    <tr>
+      <th>课程名称</th>
+      <th>教师姓名</th>
+      <th>上课时间</th>
+      <th>上课地点</th>
+      <th>学分</th>
+      <th>周学时</th>
+      <th>起始结束</th>
+      <th>容量</th>
+      <th>余量</th>
+      <th>课程归属</th>
+      <th>课程性质</th>
+      <th>校区</th>
+      <th>开课学院</th>
+      <th>考试时间</th>
+      <th>退选</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for classed in classesed %}<!-- 用一个for循环自动生成表格 -->
+    <tr>
+      <td>
+          {{ classed.name }}
+      </td>
+      <td>
+          {{ classed.tname }}
+      </td>
+      <td>
+          {{ classed.ctime }}
+      </td>
+      <td>
+          {{ classed.troom }}
+      </td>
+      <td>{{ classed.credit }}</td>
+      <td>{{ classed.chour }}</td>
+      <td>{{ classed.cweek }}</td>
+      <td>{{ classed.cquantity }}</td>
+      <td>{{ classed.cmargin }}</td>
+      <td>{{ classed.csource }}</td>
+      <td>{{ classed.cproperty }}</td>
+      <td>{{ classed.ccode }}</td>
+      <td>{{ classed.cacademy }}</td>
+      <td>{{ classed.cetime }}</td>
+      <td><a href="#">退选</a></td>
+    </tr>
+  {% endfor %}<!-- 结束for循环 -->
+  </tbody>
+</table>
+
+{% endblock %}

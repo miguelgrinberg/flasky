@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - class{% endblock %}
+
+{% block page_content %}
+
+<table class="table table-bordered table-hover">
+  <caption>基本的表格布局</caption>
+  <thead>
+    <tr>
+      <th>选课课号</th>
+      <th>课程名称</th>
+      <th>课程性质</th>
+      <th>上课时间</th>
+      <th>教师姓名</th>
+      <th>学分</th>
+      <th>周学时</th>
+      <th>上课地点</th>
+      <th>课程归属</th>
+      <th>校区代码</th>
+      <th>开课学院</th>
+      <th>考试时间</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for classe in classes %}<!-- 用一个for循环自动生成表格 -->
+    <tr>
+      <td>{{ classe.id }}</td>
+      <td>{{ classe.name }}</td>
+      <td>{{ classe.cproperty }}</td>
+      <td>{{ classe.ctime }}</td>
+      <td>{{ classe.tname }}</td>
+      <td>{{ classe.credit }}</td>
+      <td>{{ classe.chour }}</td>
+      <td>{{ classe.croom }}</td>
+      <td>{{ classe.csource }}</td>
+      <td>{{ classe.ccode }}</td>
+      <td>{{ classe.cacademy }}</td>
+      <td>{{ classe.ctime }}</td>
+    </tr>
+  {% endfor %}<!-- 结束for循环 -->
+  </tbody>
+</table>
+
+{% endblock %}

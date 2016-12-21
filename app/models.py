@@ -46,6 +46,10 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
+registrations = db.Table('registrations',
+                         db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+                         db.Column('class_id', db.Integer, db.ForeignKey('classes.id'))
+                         )
 
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
@@ -61,6 +65,10 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     avatar = db.Column(db.String(128), default=None)
+    classes = db.relationship('Class',
+                              secondary =registrations,
+                              backref = db.backref('users', lazy='dynamic'),
+                              lazy='dynamic')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -145,8 +153,28 @@ class User(UserMixin, db.Model):
         self.last_seen = datetime.utcnow()
         db.session.add(self)
 
+
     def __repr__(self):
         return '<User %r>' % self.username
+
+class Class(db.Model):
+    __tablename__ = 'classes'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    tname = db.Column(db.String)
+    ctime = db.Column(db.String)
+    croom = db.Column(db.String)
+    credit = db.Column(db.Float)
+    chour = db.Column(db.String)
+    cweek = db.Column(db.String)
+    cquantity = db.Column(db.Integer)
+    cmargin = db.Column(db.Integer)
+    csource = db.Column(db.String)
+    cproperty = db.Column(db.String)
+    ccode =db.Column(db.String)
+    cacademy = db.Column(db.String)
+    cetime = db.Column(db.String)
+
 
 
 class AnonymousUser(AnonymousUserMixin):
