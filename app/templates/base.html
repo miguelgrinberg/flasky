@@ -14,9 +14,24 @@
 {% endblock metas %}
 
 {% block styles %}
-<link href="{{ url_for('static', filename='bootswatch.css') }}" rel="stylesheet" integrity="sha384-zF4BRsG/fLiTGfR9QL82DrilZxrwgY/+du4p/c7J72zZj+FLYq4zY00RylP9ZjiT" crossorigin="anonymous">
+{{ super() }}
+<link href="{{ url_for('static', filename='bootswatch.css') }}" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}">
 {% endblock styles %}
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+        $("#success-alert").slideUp(500);
+
+    });
+});
+</script>
+{% endblock scripts %}
 {% endblock head %}
 
 {% block body %}
@@ -33,7 +48,7 @@
             <a class="navbar-brand" href="{{ url_for('main.index') }}" id="brand">湖南师范大学</a>
         </div>
 
-    <!-- 登陆后可以看到的导航栏 -->
+        <!-- 登陆后可以看到的导航栏 -->
         {% if current_user.is_authenticated %}
         <div class="collapse navbar-collapse ">
             <ul class="nav navbar-nav">
@@ -96,20 +111,15 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> 账户 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('auth.change_password') }}">更改密码</a></li>
-                        <li><a href="{{ url_for('auth.change_email_request') }}">更改邮箱</a></li>
-                        <li><a href="{{ url_for('auth.logout') }}">安全退出</a></li>
-                    </ul>
+                <li>
+                    <a href="{{ url_for('auth.logout') }}"><span class="glyphicon glyphicon-log-out"></span> 安全退出</a>
                 </li>
                 {% else %}
-                <li><a href="{{ url_for('auth.login') }}"><span class="glyphicon glyphicon-user"></span> 登陆 </a></li>
+                <li><a href="{{ url_for('auth.login') }}"><span class="glyphicon glyphicon-user"></span> 登陆</a></li>
                 {% endif %}
             </ul>
         </div>
-    <!-- 登陆后可以看到的导航栏 -->
+        <!-- 登陆后可以看到的导航栏 -->
         {% else %}
         <div>
             <p class="navbar-text">学生信息管理系统</p>
@@ -122,8 +132,8 @@
 {% block content %}
 <div class="container">
     {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div class="alert alert-warning" id="success-alert">
+        <button type="button" class="close" data-dismiss="alert" >&times;</button>
         {{ message }}
     </div>
     {% endfor %}
@@ -165,7 +175,4 @@
 {% endblock %}
 {% endblock %}
 
-{% block scripts %}
-{{ super() }}
-{{ moment.include_moment() }}
-{% endblock scripts %}
+
