@@ -90,7 +90,7 @@ $(function() {
                         <li><a href="#">在校成绩查询</a></li>
                         <li><a href="#">等级考试成绩查询</a></li>
                         <li><a href="#">培养计划</a></li>
-                        <li><a href="#">当前选课情况查询</a></li>
+                        <li><a href="{{ url_for('main.selectedclass',username=current_user.username) }}">当前选课情况查询</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -98,7 +98,7 @@ $(function() {
                         补办学生证申请<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">补办学生证申请</a></li>
+                        <li><a href="exam_apply.html">补办学生证申请</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -106,7 +106,7 @@ $(function() {
                         补考网上报名<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">补考网上报名</a></li>
+                        <li><a href="exam_apply.html">补考网上报名</a></li>
                     </ul>
                 </li>
             </ul>

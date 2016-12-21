@@ -6,7 +6,7 @@
 {% block page_content %}
 
 <table class="table table-bordered table-hover">
-  <caption>基本的表格布局</caption>
+  <caption>已选课程</caption>
   <thead>
     <tr>
       <th>选课课号</th>
@@ -24,20 +24,20 @@
     </tr>
   </thead>
   <tbody>
-  {% for classe in classes %}<!-- 用一个for循环自动生成表格 -->
+  {% for classed in classesed %}<!-- 用一个for循环自动生成表格 -->
     <tr>
-      <td>{{ classe.id }}</td>
-      <td>{{ classe.name }}</td>
-      <td>{{ classe.cproperty }}</td>
-      <td>{{ classe.ctime }}</td>
-      <td>{{ classe.tname }}</td>
-      <td>{{ classe.credit }}</td>
-      <td>{{ classe.chour }}</td>
-      <td>{{ classe.croom }}</td>
-      <td>{{ classe.csource }}</td>
-      <td>{{ classe.ccode }}</td>
-      <td>{{ classe.cacademy }}</td>
-      <td>{{ classe.ctime }}</td>
+      <td>{{ classed.id }}</td>
+      <td>{{ classed.name }}</td>
+      <td>{{ classed.cproperty }}</td>
+      <td>{{ classed.ctime }}</td>
+      <td>{{ classed.tname }}</td>
+      <td>{{ classed.credit }}</td>
+      <td>{{ classed.chour }}</td>
+      <td>{{ classed.croom }}</td>
+      <td>{{ classed.csource }}</td>
+      <td>{{ classed.ccode }}</td>
+      <td>{{ classed.cacademy }}</td>
+      <td>{{ classed.ctime }}</td>
     </tr>
   {% endfor %}<!-- 结束for循环 -->
   </tbody>

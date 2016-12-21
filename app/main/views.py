@@ -1,3 +1,9 @@
+#-*-coding:utf-8-*-
+import sys
+reload(sys) # Python2.5 初始化后会删除 sys.setdefaultencoding 这个方法，我们需要重新载入
+sys.setdefaultencoding('utf-8')
+###########显示个中文真难啊。。。
+
 import os
 from werkzeug import secure_filename
 from flask import render_template, redirect, url_for, abort, flash, request, current_app, send_from_directory
@@ -19,7 +25,7 @@ def index():
         if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             return redirect(request.args.get('next') or url_for('main.index'))
-        flash('Invalid username or password.')
+        flash('无效的用户名或密码.')
     return render_template('index.html', form=form)
 
 
@@ -38,7 +44,7 @@ def edit_profile(nickname):
         current_user.location = form.location.data
         current_user.about_me = form.about_me.data
         db.session.add(current_user)
-        flash('Your profile has been updated.')
+        flash('你的个人信息已更新.')
         return redirect(url_for('.user', username=nickname))
     form.name.data = current_user.name
     form.location.data = current_user.location
@@ -61,7 +67,7 @@ def edit_profile_admin(id):
         user.location = form.location.data
         user.about_me = form.about_me.data
         db.session.add(user)
-        flash('The profile has been updated.')
+        flash('个人信息已更新.')
         return redirect(url_for('.user', username=user.username))
     form.email.data = user.email
     form.username.data = user.username
@@ -104,23 +110,30 @@ def upload_file():
         return render_template('upload_file.html')
 
 
-@main.route('/selectclass/<username>/<cname>', methods=['GET','POST'])
-def selectclass(username,cname):
+@main.route('/selectclass/<username>', methods=['GET','POST'])
+def selectclass(username):
+
     user = User.query.filter_by(username=username).first_or_404()
     form = SelectClassForm()
     form1 = isSelectClassForm()
     classes = Class.query.all()
     classesed = user.classes.all()
     if form.validate_on_submit():
-        classeding = Class.query.filter_by(cname=cname)
-        user.classes.append(classeding)
-        return redirect(url_for('.selectclass',classes=classes, form=form, form1=form1, classesed=classesed))
+        ids=request.args.get('submitname')
+        classesing = Class.query.filter_by(id=ids).first_or_404()
+        user.classes.append(classesing)
+        db.session.add(user)
+        flash('您已选课成功！')
+
+        return redirect(url_for('.selectclass', username=user.username))
     return render_template('selectclass.html', classes=classes, form=form, form1=form1, classesed=classesed)
 
 
-
-
-
+@main.route('/selectedclass/<username>', methods=['GET','POST'])
+def selectedclass(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    classesed = user.classes.all()
+    return render_template('selected_class.html', classesed=classesed)
 
 
 

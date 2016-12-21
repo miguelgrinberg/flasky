@@ -5,11 +5,25 @@
 
 {% block scripts %}
 {{ super() }}
+<script type=text/javascript>
+var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+</script>
 <script type="text/javascript">
 $(function() {
-    $("input[type='checkbox']").is(':checked');
+    function submitname() {
+        $.getJSON($SCRIPT_ROOT + '/selectclass/<currentcurrent_user.username>',{
+          claname: $('input[name="Jszzdm1"]').val(),
+          now: new Date().getTime()
+        });
+    }
+    if($("input[type='checkbox']").is(':checked')){
+        submitname();
+    };
 });
 </script>
+
+
+
 {% endblock %}
 
 {% block page_content %}
@@ -44,9 +58,7 @@ $(function() {
           {{ wtf.quick_form(form1) }}
       </td>
       <td>
-          <label>
-            <input type="checkbox">
-          </label>
+          <input name="Jszzdm1" id="Jszzdm1" type="checkbox" value="{{ classe.id }}" />
       </td>
       <td>
           {{ classe.name }}
@@ -78,8 +90,11 @@ $(function() {
   </tbody>
 </table>
 
+<input type="button" value="GET" onclick="alert($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))"/>
+
+
 {{ wtf.quick_form(form) }}
- <br>
+<br>
 
 <table class="table table-bordered table-hover">
   <caption>已选课程</caption>
