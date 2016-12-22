@@ -1,0 +1,287 @@
+{% block styles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='guoziliang.css') }}">
+{% endblock styles %}
+{% block head %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>郭梓梁的主页</title>
+</head>
+{% endblock %}
+{% block body %}
+    
+    
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">郭梓梁</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="http://virtual-dawn.com/index_english.html" target="_blank">郭梓梁</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#home">主页</a>
+                    </li>
+                    <li>
+                        <a href="#about">关于</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">投资</a>
+                    </li>
+                   <li>
+                        <a href="#contact">联系</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        
+    </nav>
+
+
+    
+    <a name="home"></a>
+    <div class="intro-header">
+      <div class="bg-overlay">
+        <div class="container">
+  
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>郭梓梁</h1>
+                        <h3>展现我的精彩人生。</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="https://www.zhihu.com/people/mluka/activities" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">知乎</span></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Mluka" target="_blank" class="btn btn-default btn-lg "><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                            </li>
+                            <li>
+                                <a href="https://www.douban.com/people/48807575/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">豆瓣</span></a>
+                            </li>
+                            <li>
+                                <a href="https://freecodecamp.cn/mluka" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-fire fa-fw"></i> <span class="network-name">freeCodeCamp</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+      </div>
+    </div>
+    
+
+    <a  name="about"></a>
+    <div class="content-section-a">
+      <div class="bg-overlay2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    
+                    <div class="clearfix"></div>
+                  <h2 class="section-heading">郭梓梁</h2>
+                  </br>
+                    <p class="lead">我是一个<a class="link" target="_blank" href="http://www.freecodecamp.com/thiagoferreira">大学生</a> 喜爱篮球，辩论和健身。在freecodecamp学会了很多东西</br>我现在居住在长沙，希望可以承担起长沙的freecodecamp线下组织者的职责。成为freecodecamp开源项目
+     </br> 的一员。
+</br>
+</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-lg-5 collapse navbar-collapse">
+                    <img class="img-circle img-responsive" src="http://ww3.sinaimg.cn/large/c2325b9dgw1f83wk7rzd4j20fa0jlacb.jpg" alt="" id="myphoto">
+                </div>
+            </div>
+
+        </div>
+        
+      </div>
+     </div>
+    </div>
+  
+     
+   <a  name="portfolio"></a>
+    <section id="portfolio" class="bg-light-gray bounds">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">我喜爱的网站</h2>
+                    <h3 id="below-section" class="section-subheading text-muted">与你分享</h3>
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="https://www.zhihu.com" target="_blank" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-fire fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://www.36dsj.com/wp-content/uploads/2013/09/37.png" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>知乎</h4>
+                        <p id="small-text" class="text-muted">与世界分享你的知识、经验和见解</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-6 portfolio-item portfolio2">
+                    <a href="https://www.douban.com" class="portfolio-link" target="_blank" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-fire fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://img6.douban.com/lpic/s25801468.jpg" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>豆瓣</h4>
+                        <p id="small-text" class="text-muted">文艺青年聚集地</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="http://www.dgtle.com" target="_blank" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-fire fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://img.dgtle.com/forum/201211/06/153620vfdv76y6rr9998kr.jpg" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>数字尾巴</h4>
+                        <p id="small-text" class="text-muted">分享美好数字生活</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="https://gold.xitu.io/" target="_blank" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-fire fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="https://gold-cdn.xitu.io/images/logo-header.svg" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>掘金</h4>
+                        <p id="small-text" class="text-muted">高质量技术文章</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="http://www.bilibili.com" target="_blank" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-fire fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://pic.58pic.com/58pic/17/19/25/56y58PICiz2_1024.jpg" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>哔哩哔哩</h4>
+                        <p id="small-text" class="text-muted">学习之余也别忘了娱乐</p>
+                    </div>
+                </div>
+              
+                <div class="col-md-4 col-sm-6 portfolio-item">
+                    <a href="http://www.g-cores.com/" target="_blank" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-fire fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="http://i1.hdslb.com/u_user/2ba2f5c04582270b48e5048832a04d31.jpg" class="img-responsive" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>机核网</h4>
+                        <p id="small-text" class="text-muted">国内第一家游戏广播电台</p>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </section>
+
+    <a  name="contact"></a>
+    <div class="banner">
+      <div class="bg-overlay4">
+        <div class="container">         
+            <div class="row">
+                <div class="col-lg-6">
+                  <h2 class="connect"> 通过这个邮箱和我联系: 921877607@qq.com</h2>
+                </div>
+              </br>
+      
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                                <a href="https://www.zhihu.com/people/mluka/activities" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">知乎</span></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Mluka" target="_blank" class="btn btn-default btn-lg "><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                            </li>
+                            <li>
+                                <a href="https://www.douban.com/people/48807575/" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">豆瓣</span></a>
+                            </li>
+                            <li>
+                                <a href="https://freecodecamp.cn/mluka" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-fire fa-fw"></i> <span class="network-name">freeCodeCamp</span></a>
+                            </li>
+                      
+                    </ul>
+                </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+</div>
+    
+    <footer>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">主页</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">关于</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#portfolio">投资</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">联系</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; 郭梓梁2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+{% endblock %}

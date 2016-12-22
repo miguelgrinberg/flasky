@@ -5,21 +5,10 @@
 
 {% block scripts %}
 {{ super() }}
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type=text/javascript>
 var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
-</script>
-<script type="text/javascript">
-$(function() {
-    function submitname() {
-        $.getJSON($SCRIPT_ROOT + '/selectclass/<currentcurrent_user.username>',{
-          claname: $('input[name="Jszzdm1"]').val(),
-          now: new Date().getTime()
-        });
-    }
-    if($("input[type='checkbox']").is(':checked')){
-        submitname();
-    };
-});
 </script>
 
 
@@ -58,7 +47,7 @@ $(function() {
           {{ wtf.quick_form(form1) }}
       </td>
       <td>
-          <input name="Jszzdm1" id="Jszzdm1" type="checkbox" value="{{ classe.id }}" />
+          <input name="a" id="Jszzdm1" type="checkbox" value="{{ loop.index }}" />
       </td>
       <td>
           {{ classe.name }}
@@ -92,8 +81,9 @@ $(function() {
 
 <input type="button" value="GET" onclick="alert($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))"/>
 
-
-{{ wtf.quick_form(form) }}
+<form action="{{ url_for('main.selectclass') }}" method=post>
+    <input type=submit class="btn btn-default" id="caonima" value="提交" name=1>
+</form>
 <br>
 
 <table class="table table-bordered table-hover">
@@ -147,5 +137,4 @@ $(function() {
   {% endfor %}<!-- 结束for循环 -->
   </tbody>
 </table>
-
 {% endblock %}

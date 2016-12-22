@@ -6,7 +6,7 @@ sys.setdefaultencoding('utf-8')
 
 import os
 from werkzeug import secure_filename
-from flask import render_template, redirect, url_for, abort, flash, request, current_app, send_from_directory
+from flask import render_template, redirect, url_for, abort, flash, request, current_app, send_from_directory,jsonify
 from flask_login import login_required, current_user, login_user
 from . import main
 from .forms import EditProfileForm, EditProfileAdminForm, LoginForm, SelectClassForm, isSelectClassForm
@@ -105,27 +105,29 @@ def upload_file():
                 file.save('/{}/{}_{}'.format(UPLOAD_FOLDER, current_user.username, fname))
                 current_user.avatar = '../static/avatar/{}_{}'.format(current_user.username, file.filename)
                 db.session.add(current_user)
-                flash('has been renew')            
+                flash('头像已更新')
                 return redirect(url_for('.user', username=current_user.username))
         return render_template('upload_file.html')
 
 
-@main.route('/selectclass/<username>', methods=['GET','POST'])
-def selectclass(username):
-
-    user = User.query.filter_by(username=username).first_or_404()
+@main.route('/selectclass', methods=['GET','POST'])
+def selectclass():
+    username=current_user.username
+    user = User.query.filter_by(username=username).first()
     form = SelectClassForm()
     form1 = isSelectClassForm()
     classes = Class.query.all()
     classesed = user.classes.all()
-    if form.validate_on_submit():
-        ids=request.args.get('submitname')
+    if request.method == 'POST':
+
+        ids=request.form.get('a', 0)
+        print ids
         classesing = Class.query.filter_by(id=ids).first_or_404()
         user.classes.append(classesing)
         db.session.add(user)
         flash('您已选课成功！')
 
-        return redirect(url_for('.selectclass', username=user.username))
+        return redirect(url_for('.selectclass'))
     return render_template('selectclass.html', classes=classes, form=form, form1=form1, classesed=classesed)
 
 
@@ -136,11 +138,13 @@ def selectedclass(username):
     return render_template('selected_class.html', classesed=classesed)
 
 
+@main.route('/guoziliangpage')
+def guopage():
+    return render_template('guoziliang.html')
 
-
-
-
-
+@main.route('/calculator')
+def calculator():
+    return render_template('calculator.html')
 
 
 

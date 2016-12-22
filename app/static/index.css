@@ -1,0 +1,52 @@
+/*左侧个人介绍*/
+.fixed{
+	position:fixed;
+	left: 0;
+    top:235px;
+	width:125px;
+    height: 110px;
+	background-color: rgba(192, 192, 192, 0.5);
+    border-style: solid;
+    border-left-style: none;
+    border-top-style: none;
+    border-width:5px;
+    border-color: rgba(79,195,247,0.5);
+    text-align:center;
+
+}
+
+.fixed2{
+    position: fixed;
+    left: 0;
+    top: 200px;
+    width:125px;
+    height: 35px;
+    background-color: rgba(192, 192, 192, 1);
+    border-style: solid;
+    border-left-style: none;
+    border-width:5px;
+    border-color: rgba(79,195,247,0.5);
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: large;
+    text-align:center;
+
+}
+
+.floadAd { position: absolute;z-index: 999900; display: none; }
+.floadAd .item { display: block; }
+.floadAd .item img {
+    vertical-align: bottom;
+    height: 100px;
+    width: 100px;
+}
+
+.close{
+    color: orangered;
+    font-size:10px;
+}
+
+.fixed a:hover{
+    background: #1b6d85;
+	color: white;
+	transition: 0.5s;
+}

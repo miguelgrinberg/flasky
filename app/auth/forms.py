@@ -27,7 +27,7 @@ class RegistrationForm(Form):
                                           'Usernames must have only letters, '
                                           'numbers, dots or underscores')])
     password = PasswordField('密码', validators=[
-        Required(), EqualTo('password2', message='Passwords must match.')])
+        Required(), EqualTo('password2', message='密码必须一致.')])
     password2 = PasswordField('确认密码', validators=[Required()])
     submit = SubmitField('注册')
 
@@ -43,28 +43,28 @@ class RegistrationForm(Form):
 class ChangePasswordForm(Form):
     old_password = PasswordField('旧密码', validators=[Required()])
     password = PasswordField('新密码', validators=[
-        Required(), EqualTo('password2', message='Passwords must match')])
+        Required(), EqualTo('password2', message='密码必须一致.')])
     password2 = PasswordField('确认新密码', validators=[Required()])
     submit = SubmitField('提交')
 
 
 class PasswordResetRequestForm(Form):
-    email = StringField('Email', validators=[Required(), Length(1, 64),
+    email = StringField('邮箱l', validators=[Required(), Length(1, 64),
                                              Email()])
-    submit = SubmitField('Reset Password')
+    submit = SubmitField('提交')
 
 
 class PasswordResetForm(Form):
     email = StringField('邮箱', validators=[Required(), Length(1, 64),
                                              Email()])
-    password = PasswordField('New Password', validators=[
-        Required(), EqualTo('password2', message='Passwords must match')])
-    password2 = PasswordField('Confirm password', validators=[Required()])
-    submit = SubmitField('Reset Password')
+    password = PasswordField('新密码', validators=[
+        Required(), EqualTo('password2', message='密码必须一致.')])
+    password2 = PasswordField('确认新密码', validators=[Required()])
+    submit = SubmitField('提交')
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first() is None:
-            raise ValidationError('Unknown email address.')
+            raise ValidationError('未知的邮箱地址.')
 
 
 class ChangeEmailForm(Form):

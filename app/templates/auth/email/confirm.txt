@@ -1,13 +1,13 @@
-Dear {{ user.username }},
+亲爱的 {{ user.username }},
 
-Welcome to Flasky!
+欢迎来到湖南师范大学!
 
-To confirm your account please click on the following link:
+为了确认你的邮箱，请点击以下链接:
 
 {{ url_for('auth.confirm', token=token, _external=True) }}
 
-Sincerely,
+湖南师范大学,
 
-The Flasky Team
+郭梓梁
 
-Note: replies to this email address are not monitored.
+提示：本邮件自动发送，请不要回复.

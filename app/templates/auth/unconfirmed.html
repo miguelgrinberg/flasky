@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Flasky - Confirm your account{% endblock %}
+{% block title %}确认你的账户{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
     <h1>
-        Hello, {{ current_user.username }}!
+        你好, {{ current_user.username }}!
     </h1>
-    <h3>You have not confirmed your account yet.</h3>
+    <h3>你还没有确认你的账户.</h3>
     <p>
-        Before you can access this site you need to confirm your account.
-        Check your inbox, you should have received an email with a confirmation link.
+        在确认之前，你还不能使用本网站.
+        检查你的邮箱，查看确认邮件，并且点击链接确认.邮件可能在垃圾邮箱.
     </p>
     <p>
-        Need another confirmation email?
-        <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
+        没有收到邮件？
+        <a href="{{ url_for('auth.resend_confirmation') }}">重新发送</a>
     </p>
 </div>
 {% endblock %}

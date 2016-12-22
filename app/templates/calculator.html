@@ -1,0 +1,84 @@
+
+{% block head %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='calculator.css') }}">
+{% endblock styles %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon2.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon2.ico') }}" type="image/x-icon">
+{% block script %}
+
+
+
+{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>郭梓梁的计算器</title>
+  <meta name="viewport" content="width=320, initial-scale=1.0"/>
+  <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+
+</head>
+{% endblock %}
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static',filename='calculator.js') }}"></script>
+<body>
+  <div class="box">
+    <div class="screen">
+      <div class="main-screen" id="output">0</div>
+      <div class="sub-screen" id="output2"></div>
+    </div>
+
+    <input type="hidden" id="num1">
+    <input type="hidden" id="operator">
+    <input type="hidden" id="num2">
+    <input type="hidden" id="temp">
+
+    <!--a class="github" href="https://github.com/greyli/calculator" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="image/banner.png" alt="Fork me on GitHub"></a-->
+
+    <div class="container-fluid">
+      <div class="buttons">
+        <button class="btn-clear btn btn-danger" id="clearButton">AC</button>
+        <button class="btn btn-warning" id="deleteButton">CE</button>
+        <button class="btn-operate btn btn-default" value="/">/</button>
+        <button class="btn-operate btn btn-default" value="*">x</button>
+      </div>
+
+      <div class="buttons">
+        <button class="nums btn btn-default" value="7">7</button>
+        <button class="nums btn btn-default" value="8">8</button>
+        <button class="nums btn btn-default" value="9">9</button>
+        <button class="btn-operate btn btn-default" value="-">-</button>
+      </div>
+
+      <div class="buttons">
+        <button class="nums btn btn-default" value="4">4</button>
+        <button class="nums btn btn-default" value="5">5</button>
+        <button class="nums btn btn-default" value="6">6</button>
+        <button class="btn-operate btn btn-default" value="+">+</button>
+      </div>
+
+      <div class="buttons">
+        <button class="nums btn btn-default" value="1">1</button>
+        <button class="nums btn btn-default" value="2">2</button>
+        <button class="nums btn btn-default" value="3">3</button>
+        <button class="btn-equal btn btn-info" id="resultButton">=</button>
+      </div>
+
+      <div class="buttons">
+        <button class="nums btn-zero btn btn-default" value="0">0</button>
+        <button class="nums btn btn-default" value=".">.</button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer class="text-center">
+      Made by 郭梓梁
+  </footer>
+
+
+</body>
+</html>
+

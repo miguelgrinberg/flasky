@@ -5,12 +5,11 @@
 
 {% block page_content %}
 <div class="page-header">
-    <h1>Login</h1>
+    <h1>登陆</h1>
 </div>
 <div class="col-md-4">
     {{ wtf.quick_form(form) }}
     <br>
-    <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Click here to reset it</a>.</p>
-    <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>
+    <p>忘记密码？ <a href="{{ url_for('auth.password_reset_request') }}">点击这里重新设置</a>.</p>
 </div>
 {% endblock %}
