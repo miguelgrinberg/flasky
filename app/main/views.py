@@ -120,7 +120,7 @@ def selectclass():
     classesed = user.classes.all()
     if request.method == 'POST':
 
-        ids=request.form.get('a', 0)
+        ids=request.form['a']
         print ids
         classesing = Class.query.filter_by(id=ids).first_or_404()
         user.classes.append(classesing)

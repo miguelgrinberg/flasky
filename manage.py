@@ -8,7 +8,7 @@ from flask_migrate import Migrate, MigrateCommand
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 migrate = Migrate(app, db)
-
+app.secret_key='hard to guess string'
 
 
 def make_shell_context():
@@ -26,4 +26,4 @@ def test():
 
 
 if __name__ == '__main__':
-    manager.run()
+    app.run()

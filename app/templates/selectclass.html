@@ -10,6 +10,15 @@
 <script type=text/javascript>
 var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
 </script>
+<script>
+    $(function () {
+        $('#cool').bind('click',function () {
+            $.post($SCRIPT_ROOT+'/selectclass',{
+                a:$('input[type=checkbox]:checked').val()
+            });
+        });
+    });
+</script>
 
 
 
@@ -44,10 +53,10 @@ var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
   {% for classe in classes %}<!-- 用一个for循环自动生成表格 -->
     <tr>
       <td>
-          {{ wtf.quick_form(form1) }}
+          <input name="a" id="Jszzdm1" type="checkbox" value="{{ classe.id }}" />
       </td>
       <td>
-          <input name="a" id="Jszzdm1" type="checkbox" value="{{ loop.index }}" />
+          <input type="checkbox"/>
       </td>
       <td>
           {{ classe.name }}
@@ -79,11 +88,9 @@ var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
   </tbody>
 </table>
 
-<input type="button" value="GET" onclick="alert($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))"/>
 
-<form action="{{ url_for('main.selectclass') }}" method=post>
-    <input type=submit class="btn btn-default" id="caonima" value="提交" name=1>
-</form>
+<input type="hidden" name="a">
+<button id="cool" class="btn btn-default">选课</button>
 <br>
 
 <table class="table table-bordered table-hover">
@@ -132,7 +139,8 @@ var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
       <td>{{ classed.ccode }}</td>
       <td>{{ classed.cacademy }}</td>
       <td>{{ classed.cetime }}</td>
-      <td><a href="#">退选</a></td>
+      <td><a href="#" >退选</a></td>
+      <td style="display: none">{{ classed.id }}</td>
     </tr>
   {% endfor %}<!-- 结束for循环 -->
   </tbody>

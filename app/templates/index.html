@@ -135,9 +135,11 @@
         </div>
     </div>
 </div>
+{% if not current_user.is_authenticated %}
 <div class="fixed2 animated fadeInLeft">
     <p>我的作品</p>
 </div>
+
 <div class="fixed animated fadeInLeft">
     <p><a href="{{ url_for('main.guopage') }}" target="_blank">个人主页</a></p>
     <p><a href="{{ url_for('main.calculator') }}" t>计算器</a></p>
@@ -148,9 +150,9 @@
 <div id="floadAD" class="floadAd">
     <a class="close" href="javascript:void(0);">×关闭</a>
     <a class="item" title='文化节' href="http://jky.hunnu.edu.cn/" target="_blank">
-    <img src="{{ url_for('static',filename='llx_timg.jpeg') }}" alt="文化节" /></a>
+    <img src="http://ww1.sinaimg.cn/thumb300/420cf682jw1f85mkcammvj20ku0rsjw8.jpg" alt="文化节" /></a>
 </div>
-
+{% endif %}
 <!-- 最近通知 -->
 <div class="col-md-12">
     <div data-spy="scroll" data-offset="0"
