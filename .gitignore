@@ -2,7 +2,9 @@
 
 # C extensions
 *.so
+*.loging
 
+/a
 # Packages
 *.egg
 *.egg-info

@@ -1,0 +1,359 @@
+[33mcommit 49a3528f81b1d0e850ceec7891a0d0c93f334bc0[m
+Author: vision9527 <1876063796@qq.com>
+Date:   Sat Apr 22 19:12:33 2017 +0800
+
+    a.txt
+
+[33mcommit b5671913605b7a419910a03b17208de514cd51c1[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Jan 5 03:20:35 2014 -0800
+
+    Chapter 17: Traditional hosting (17d)
+
+[33mcommit 3a11706f89f620d8556e15480d06943044bdd8a4[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Jan 5 02:38:01 2014 -0800
+
+    Chapter 17: Heroku support (17c)
+
+[33mcommit a5695710ed41a65bf56fb3b067fa4d4da707fe45[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Jan 5 00:42:33 2014 -0800
+
+    Chapter 17: Email notification of application errors (17b)
+
+[33mcommit fe55c58feb4aeea72ab90f6b189c10effe2e57eb[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Jan 5 02:19:40 2014 -0800
+
+    Chapter 17: Deploy command (17a)
+
+[33mcommit 468b8f358cb998699412ddf64afe12fd80ec61ed[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Jan 5 02:11:42 2014 -0800
+
+    Chapter 16: Source code profiling (16b)
+
+[33mcommit f527608f1ca91040cb323dbf1ad1df720d007c41[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Jan 5 02:02:16 2014 -0800
+
+    Chapter 16: Logging of slow database queries (16a)
+
+[33mcommit 7b525ca1fde9801fa3fab9fb4ce02041098e3687[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sat Jan 4 23:45:18 2014 -0800
+
+    Chapter 15: Unit tests with Selenium (15d)
+
+[33mcommit f282e447dff5b5da93f4b149928a73ae97f0f976[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sat Jan 4 22:56:50 2014 -0800
+
+    Chapter 15: API testing with the Flask test client (15c)
+
+[33mcommit d6d762dbc5bd241355abdc2fb21e548f136a9d5b[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sat Jan 4 22:25:47 2014 -0800
+
+    Chapter 15: Unit tests with the Flask test client (15b)
+
+[33mcommit 64ad623d7285c01e2cea75661de3b9f6d4d359a4[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sat Jan 4 16:19:40 2014 -0800
+
+    Chapter 15: Coverage metrics (15a)
+
+[33mcommit 2d66e69a64a78dca88d7a29f862aa987403dc192[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Jan 2 23:08:16 2014 -0800
+
+    Chapter 14: API (14a)
+
+[33mcommit c4e26260acf55df55b7e5c2cb0b581f3db29f60d[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Wed Jan 1 23:36:39 2014 -0800
+
+    Chapter 13: Comment moderation (13b)
+
+[33mcommit f8aea807147e8908373c0cd8c75a03c263a96836[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Wed Jan 1 12:10:12 2014 -0800
+
+    Chapter 13: Blog post comments (13a)
+
+[33mcommit 30d6390f72951259cd1707a32f8dfad13a6969ca[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Feb 4 23:04:19 2014 -0800
+
+    Chapter 12: Self-followers (12e)
+
+[33mcommit 07b1230b91412663c2f70fdab058539b12db5f93[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 23:19:58 2013 -0800
+
+    Chapter 12: Show followed blog posts in home page (12d)
+
+[33mcommit d8a5f5d5600eb76e2dfc4398dc4f38b2290af994[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 20:04:50 2013 -0800
+
+    Chapter 12: Followed posts with a join (12c)
+
+[33mcommit 42c5127904756534bb28130271c8a7990a74dfa0[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 17:04:21 2013 -0800
+
+    Chapter 12: Followers in the application (12b)
+
+[33mcommit 347b2c8f93290961781d4e0ec41f5178e0f0caea[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 16:17:29 2013 -0800
+
+    Chapter 12: Database representaton of followers (12a)
+
+[33mcommit d9b89f7efeb40813f7d393accd807f953e0196f8[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 13:12:30 2013 -0800
+
+    Chapter 11: Blog post editor (11h)
+
+[33mcommit 5e799c783a409e7e160c05be7c6433e4a22f73be[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 03:53:54 2013 -0800
+
+    Chapter 11: Permanent links to posts (11g)
+
+[33mcommit d958958761b674c8e4886fcd837ae17f13a698ac[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Feb 4 22:52:19 2014 -0800
+
+    Chapter 11: Rich text server side handling with Markdown and Bleach (11f)
+
+[33mcommit 495029a72a6021aaf085da84db99163feaab3265[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 03:27:41 2013 -0800
+
+    Chapter 11: Rich text blog posts with Flask-PageDown (11e)
+
+[33mcommit 90367217eec1e48795df7ada4f475d0decf40427[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 01:57:14 2013 -0800
+
+    Chapter 11: Blog post pagination (11d)
+
+[33mcommit 03ca73faa3f1439da1aea9a709002342a0472042[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Feb 4 22:41:58 2014 -0800
+
+    Chapter 11: Generate fake users and posts (11c)
+
+[33mcommit 75d750e29a2d79bc3bade58bbf36c95e82b319ce[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Dec 31 01:13:28 2013 -0800
+
+    Chapter 11: Blog posts in profile pages (11b)
+
+[33mcommit 38fe114820c844af6c7743e50f00bbeb369ddbf1[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Mon Dec 30 23:35:56 2013 -0800
+
+    Chapter 11: Blog posts (11a)
+
+[33mcommit 862968c6a2478a2a5c94dea39b7bd3e0538da54b[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Tue Feb 4 09:10:57 2014 -0800
+
+    Chapter 10: Caching of user avatar hashes (10d)
+
+[33mcommit b8ea2e4d207f3879d6c78962fadbe40054f88203[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Wed Feb 26 22:40:11 2014 -0800
+
+    Chapter 10: User avatars (10c)
+
+[33mcommit dfaeda93c81be26d75b72ec81bca3a2b34cf1ba4[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Mon Dec 30 19:18:14 2013 -0800
+
+    Chapter 10: Profiles editor (10b)
+
+[33mcommit eca1af30f2ca17d6e3e08d09b2cc9c913d6e79f2[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Mon Dec 30 00:11:00 2013 -0800
+
+    Chapter 10: User profiles (10a)
+
+[33mcommit 35ad78901efb838ed3bc85fbc067da2ae3034ea9[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Dec 29 23:21:22 2013 -0800
+
+    Chapter 9: User roles and permissions (9a)
+
+[33mcommit 786d96ba617c4b36403444e9db05c52b2b1226b0[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Dec 29 12:07:29 2013 -0800
+
+    Chapter 8: Email address changes (8h)
+
+[33mcommit c0aa940803f22ac504a4e748fe41b98d55e5ee66[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Dec 29 13:04:33 2013 -0800
+
+    Chapter 8: Password resets (8g)
+
+[33mcommit a0afd004863efff3ffd7035559c8f996860fb28b[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Dec 29 12:20:24 2013 -0800
+
+    Chapter 8: Password updates (8f)
+
+[33mcommit cf77dc0c0ce04e6a2fc2899d9ed9bafc9b049610[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Dec 29 00:10:10 2013 -0800
+
+    Chapter 8: Account confirmation (8e)
+
+[33mcommit c2ebede0abf1df89ccfac0a2e53a633c315097e5[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Jan 30 10:18:40 2014 -0800
+
+    Chapter 8: User registration (8d)
+
+[33mcommit 8ed9768cde81610b7647a7b2ba0dc13b086e4e2d[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Jan 30 10:07:13 2014 -0800
+
+    Chapter 8: Login and logout with Flask-Login (8c)
+
+[33mcommit 815c71f8d272264d8ca93164ebe0818ae553de12[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sat Dec 28 19:36:00 2013 -0800
+
+    Chapter 8: Authentication blueprint (8b)
+
+[33mcommit 4aaeab3d9087ca35076f04a6ae897a7c2ce4d45d[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sat Dec 28 01:05:18 2013 -0800
+
+    Chapter 8: Password hashing with Werkzeug (8a)
+
+[33mcommit 737061eaccb9efc07946f502cb9966dad8f1e7f7[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 02:31:00 2013 -0800
+
+    Chapter 7: Large file structure (7a)
+
+[33mcommit 5cb8612f52eea8038b0bc8830566b3bf21c26d10[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 00:21:31 2013 -0800
+
+    Chapter 6: Asynchronous emails (6b)
+
+[33mcommit c34699225ba8e14443e1eeab8406f487aa23d87f[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 00:16:17 2013 -0800
+
+    Chapter 6: Email support with Flask-Mail (6a)
+
+[33mcommit 21dc7bc4e81fea6b0428d0e2efc0aabb2ffba2da[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 01:30:09 2013 -0800
+
+    Chapter 5: Database migrations with Flask-Migrate (5d)
+
+[33mcommit 91d669701812fa7e0002a3315ac94cdc853ae1c0[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 01:15:44 2013 -0800
+
+    Chapter 5: Shell context (5c)
+
+[33mcommit 29fcd5d5051115a2d5918ea8af6a927295e298af[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Feb 13 10:11:55 2014 -0800
+
+    Chapter 5: Database use in the application (5b)
+
+[33mcommit 1dd07878ab58a616cd8609abc0cc81afcc7ce545[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 01:03:07 2013 -0800
+
+    Chapter 5: Database models with Flask-SQLAlchemy (5a)
+
+[33mcommit 7bcaa6f2f9adcc0a56108d11cb5293ada867fb2a[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:52:33 2013 -0800
+
+    Chapter 4: Message flashing (4c)
+
+[33mcommit b0e9228a87a70837e008871a0577f99e4f33ec52[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:49:10 2013 -0800
+
+    Chapter 4: Redirects and user sessions (4b)
+
+[33mcommit 4bd4ac955061c5ca3a38977ba879f0ccb281ee3b[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:47:29 2013 -0800
+
+    Chapter 4: Web forms with Flask-WTF (4a)
+
+[33mcommit d715bfae6d1909b15c0f89f0ec0e2d5863446ac5[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 00:30:16 2013 -0800
+
+    Chapter 3: Dates and times with Flask-Moment (3e)
+
+[33mcommit a85fbcf2b03f1f0e2bf12ecc0ff0481dce99fcb7[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:37:57 2013 -0800
+
+    Chapter 3: Static files (3d)
+
+[33mcommit af9a53203d17f62cba49d02247ad121bafa12adf[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:31:24 2013 -0800
+
+    Chapter 3: Custom error pages (3c)
+
+[33mcommit a6f303c81c00b55cbcd08e802c94708c36c0d1f7[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:12:43 2013 -0800
+
+    Chapter 3: Templates with Flask-Bootstrap (3b)
+
+[33mcommit ac45e3288b8919ba308be61bee8c000f1c9ee812[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:01:48 2013 -0800
+
+    Chapter 3: Templates (3a)
+
+[33mcommit edb0403b655f04c8a9f5da151374db0acbcf44f2[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 00:37:59 2013 -0800
+
+    Chapter 2: Command line options with Flask-Script (2c)
+
+[33mcommit b39bcb57c366f4f8fbaf48c769e18ca7fa2f850c[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 23:04:50 2013 -0800
+
+    Chapter 2: Dynamic routes (2b)
+
+[33mcommit 4ae084eab007ddb6244e95f313c51429c3517cc4[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Thu Dec 26 22:58:48 2013 -0800
+
+    Chapter 2: A complete application (2a)
+
+[33mcommit e4777c9ed2ce3b21b7086cf03c1633c0267070bf[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Fri Dec 27 01:35:04 2013 -0800
+
+    Chapter 1: initial version (1a)
+
+[33mcommit a1222afa4e424ebd94480d126f334ff1eccfc325[m
+Author: Miguel Grinberg <miguelgrinberg50@gmail.com>
+Date:   Sun Sep 29 16:48:35 2013 -0700
+
+    Initial commit
