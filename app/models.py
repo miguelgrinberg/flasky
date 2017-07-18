@@ -204,13 +204,13 @@ class User(UserMixin, db.Model):
 
     def follow(self, user):
         if not self.is_following(user):
-            f = Follow(followed=user)
-            self.followed.append(f)
+            f = Follow(follower=self, followed=user)
+            db.session.add(f)
 
     def unfollow(self, user):
         f = self.followed.filter_by(followed_id=user.id).first()
         if f:
-            self.followed.remove(f)
+            db.session.delete(f)
 
     def is_following(self, user):
         if user.id is None:
