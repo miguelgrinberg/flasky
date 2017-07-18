@@ -5,6 +5,7 @@ click==6.7
 dominate==2.3.1
 Flask==0.12.2
 Flask-Bootstrap==3.3.7.1
+Flask-HTTPAuth==3.2.3
 Flask-Login==0.4.0
 Flask-Mail==0.9.1
 Flask-Migrate==2.0.4
