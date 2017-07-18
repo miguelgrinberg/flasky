@@ -1,0 +1,4 @@
+-r prod.txt
+Flask-SSLify==0.1.5
+waitress==1.0.2
+psycopg2==2.7.3
