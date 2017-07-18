@@ -20,6 +20,7 @@
         {% endif %}
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
         <p>Member since {{ moment(user.member_since).format('L') }}. Last seen {{ moment(user.last_seen).fromNow() }}.</p>
+        <p>{{ user.posts.count() }} blog posts.</p>
         <p>
             {% if user == current_user %}
             <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>
@@ -30,4 +31,6 @@
         </p>
     </div>
 </div>
+<h3>Posts by {{ user.username }}</h3>
+{% include '_posts.html' %}
 {% endblock %}
