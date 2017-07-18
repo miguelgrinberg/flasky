@@ -20,6 +20,7 @@ Mako==1.0.7
 Markdown==2.6.8
 MarkupSafe==1.1.1
 python-dateutil==2.6.1
+python-dotenv==0.6.5
 python-editor==1.0.3
 six==1.10.0
 SQLAlchemy==1.1.11
