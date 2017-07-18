@@ -30,8 +30,8 @@
                 <a href="{{ url_for('.unfollow', username=user.username) }}" class="btn btn-default">Unfollow</a>
                 {% endif %}
             {% endif %}
-            <a href="{{ url_for('.followers', username=user.username) }}">Followers: <span class="badge">{{ user.followers.count() }}</span></a>
-            <a href="{{ url_for('.followed_by', username=user.username) }}">Following: <span class="badge">{{ user.followed.count() }}</span></a>
+            <a href="{{ url_for('.followers', username=user.username) }}">Followers: <span class="badge">{{ user.followers.count() - 1 }}</span></a>
+            <a href="{{ url_for('.followed_by', username=user.username) }}">Following: <span class="badge">{{ user.followed.count() - 1 }}</span></a>
             {% if current_user.is_authenticated and user != current_user and user.is_following(current_user) %}
             | <span class="label label-default">Follows you</span>
             {% endif %}
