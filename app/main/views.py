@@ -1,3 +1,4 @@
+import hashlib
 from flask import render_template, redirect, url_for, abort, flash, request,\
     current_app, make_response
 from flask_login import login_required, current_user
@@ -94,6 +95,7 @@ def edit_profile_admin(id):
     form = EditProfileAdminForm(user=user)
     if form.validate_on_submit():
         user.email = form.email.data
+        user.avatar_hash = hashlib.md5(form.email.data.encode('utf-8')).hexdigest()
         user.username = form.username.data
         user.confirmed = form.confirmed.data
         user.role = Role.query.get(form.role.data)
