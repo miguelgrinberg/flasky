@@ -1,0 +1,14 @@
+version: '3'
+services:
+  flasky:
+    build: .
+    ports:
+      - "8000:5000"
+    env_file: .env
+    restart: always
+    links:
+      - mysql:dbserver
+  mysql:
+    image: "mysql/mysql-server:5.7"
+    env_file: .env-mysql
+    restart: always
