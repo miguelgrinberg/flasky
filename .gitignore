@@ -35,6 +35,9 @@ nosetests.xml
 .project
 .pydevproject
 
+# Pycharm
+.idea
+
 # SQLite databases
 *.sqlite
 
