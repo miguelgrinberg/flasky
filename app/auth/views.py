@@ -13,6 +13,8 @@ from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
 def before_request():
     if current_user.is_authenticated:
         current_user.ping()
+        # There is no commit in ping(), so the last_seen cannot be updated here.
+        db.session.commit()
         if not current_user.confirmed \
                 and request.endpoint \
                 and request.blueprint != 'auth' \
