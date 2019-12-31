@@ -229,7 +229,7 @@ def followed_by(username):
 @login_required
 def show_all():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '', max_age=30*24*60*60)
+    resp.set_cookie('show_followed', '', max_age=30*24*60*60, secure=True, httponly=True, samesite='Lax')
     return resp
 
 
@@ -237,7 +237,7 @@ def show_all():
 @login_required
 def show_followed():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '1', max_age=30*24*60*60)
+    resp.set_cookie('show_followed', '1', max_age=30*24*60*60, secure=True, httponly=True, samesite='Lax')
     return resp
 
 
