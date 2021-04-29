@@ -3,7 +3,7 @@ bleach==2.0.0
 blinker==1.4
 click==6.7
 dominate==2.3.1
-Flask==0.12.2
+Flask==1.0
 Flask-Bootstrap==3.3.7.1
 Flask-HTTPAuth==3.2.3
 Flask-Login==0.4.0
