@@ -23,7 +23,7 @@ python-dateutil==2.6.1
 python-dotenv==0.6.5
 python-editor==1.0.3
 six==1.10.0
-SQLAlchemy==1.1.11
+SQLAlchemy==1.3.0
 visitor==0.1.3
 webencodings==0.5.1
 Werkzeug==0.12.2
