@@ -34,7 +34,7 @@ jobs:
     - name: Test with unittest
       
       run: |
-        flask test 
+        python -m unittest 
         
       env: 
         FLASK_APP: flasky.py
