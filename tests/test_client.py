@@ -22,10 +22,7 @@ class FlaskClientTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Stranger' in response.get_data(as_text=True))
         
-    def test_home_page_fail(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 202)
-        self.assertTrue('Stranger' in response.get_data(as_text=True))
+    
 
     def test_register_and_login(self):
         # register a new account
