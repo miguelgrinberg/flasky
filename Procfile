@@ -1,1 +1,2 @@
-web: flask db upgrade head && gunicorn flasky:app
+release: flask deploy
+web: gunicorn flasky:app
