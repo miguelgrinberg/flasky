@@ -1,1 +1,16 @@
-code {display: block; color: green;}
+code {
+    display: block;
+    color: green;
+}
+
+article {
+    background-color: rgb(242, 235, 223);
+    padding: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+article h1 {
+    color: blue;
+    font-family: verdana;
+    font-size: 200%;
+}
