@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary Flask</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Wstęp</h1>
+    <h2>Jak pracować z przykładowym kodem</h2>
+    <p>
+        Repozytorium z historią zmian i przykładowymi kodami z książki:
+        <code>$ git clone https://github.com/miguelgrinberg/flasky.git</code>
+        Przełączanie między rewizjami, do tagu <em>1a</em>:
+        <code>$ git chekout 1a</code>
+        Będąc w stanie <strong>detached HEAD</strong> wprowadzone zmiany nie mają gdzie być
+        zapisane. Resetowanie wprowadzonych zmian do wersji z commita:
+        <code>$ git reset --hard</code>
+        Synchronizowanie lokalnego repozytorium z originalnym z GitHuba:
+        <code>$ git fetch --all</code>
+        <code>$ git fetch --tags</code>
+        <code>$ git reset --hard origin/master</code>
+        Przegląd różnic występujących pomiędzy dwoma wersjami aplikacji:
+        <code>$ git diff 2a 2b</code>
+        Różnice między dwoma rewizjami na GitHubie:
+        <code><a href="https://github.com/miguelgrinberg/flasky/compare/2a...2b">
+            https://github.com/miguelgrinberg/flasky/compare/2a...2b
+        </a></code>
+    </p>
+    <h1>Instalacja</h1>
+    <h2>Tworzenie katalogu aplikacji</h2>
+    <h3>Korzystając z klonu z GitHuba</h3>
+    <p>
+        <code>$ git clone https://github.com/miguelgrinberg/flasky.git</code>
+        <code>$ cd flasky</code>
+        <code>$ git checkout 1a</code>
+    </p>
+    <h3>Ograniczając się jedynie do lokalnego projektu</h3>
+    <p>
+        <code>$ mkdir flasky</code>
+        <code>$ cd flasky</code>
+    </p>
+    <h2>Wirtualne środowiska</h2>
+    <h3>Tworzenie wirtualnego środowiska w Python 3</h3>
+    <p>
+        Polecenie tworzące wirtualne środowisko o nazwie <em>.venv</em>:
+        <code>$ python -m venv .venv</code>
+    </p>
+    <h3>Praca z wirtualnym środowiskiem</h3>
+    <p>
+        Aktywowanie wirtualnego środowiska:
+        <code>$ source .venv/bin/activate  # w Linux</code>
+        <code>&gt; .venv\Scripts\activate  # w Windows</code>
+        Uruchamianie konsoli wirtualnego środowiska (w przypadku nie aktywowania wirtualnego
+        środowiska):
+        <code>$ .venv/bin/python  # w Linux</code>
+        <code>&gt; venv\Sripts\python  # w Windows</code>
+        Deaktywowanie wirtualnego środowiska:
+        <code>$ deactivate  # w Linux</code>
+        <code>&gt; deactivate  # w Windows</code>
+    </p>
+    <h2>Instalowanie pakietu Pythona</h2>
+    <p>
+        Instalacja pakietu <em>flask</em> oraz wszystkich jego zależności:
+        <code>(.venv) $ pip install flask</code>
+        Lista zainstalowanych pakietów:
+        <code>(.venv) $ pip freeze</code>
+        Proste sprawdzenie poprawności instalacji pakietu:
+        <code>(.venv) $ python</code>
+        <code>&gt;&gt;&gt; import flask</code>
+        <code>&gt;&gt;&gt;</code>
+    </p>
+</body>
+</html>
