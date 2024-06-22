@@ -16,7 +16,12 @@ article h1 {
     font-size: 200%;
 }
 
-hr + a {
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+/* hr + a {
     color: lightblue;
     text-decoration: none;
-}
+} */

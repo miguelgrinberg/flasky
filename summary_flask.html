@@ -113,9 +113,71 @@ def user(name):
 </pre>
             Dynamiczne komponenty w trasach mogą mieć różne typy
             <pre>&lt;name&gt; (lub &lt;string: name&gt; &mdash; wartość domyślna), &lt;int: id&gt;, &lt;float: f&gt;, &lt;path: p&gt;</pre>
+        
+            <hr>
+            <a href="#">2_trasy_i_funkcje_widoku</a> ¤
+            <a href="#">2_kompletna_app</a>
         </p>
-        <hr>
-        <a href="#">Git</a>
+    
+
+        <h2>Roboczy serwer WWW</h2>
+        <p>
+            Uruchamianie serwera, najpierw ustawiamy zmienną środowiskową
+            <code>(venv) $ export FLASK_APP=hello.py</code>
+            <code>&gt; set FLASK_APP=hello.py  # Windows</code>
+            <code>(venv) $ flask run</code>
+            Inna metoda uruchamiania serwera
+            <pre>app.run()</pre>
+            Zatrzymanie serwera <kbd>Ctrl+C</kbd>
+        </p>
+        <p>
+            Adres URL: <a href="http://localhost:5000">http://localhost:5000</a>
+        </p>
+        <p>
+            W trybie debugowania serwer Flaska domyślnie włącza dwa moduły serwera:
+            <em lang="en">reloader</em> i <em lang="en">debuger</em>
+            <code>(venv) $ export FLASK_DEBUG=1</code>
+            <code>(venv) $ flask run</code>
+            W przypadku tradycyjnej metody uruchamiania serwera, moduł debugera włączamy>
+            <pre>app.run(debug=True)</pre>
+            Kodem PIN można zabezpieczyć przypadkowe uruchomienie debugera na serwerze produkcyjnym.
+        </p>
+        <p>
+            Opcje wiersza poleceń polecenia <em>flask</em>
+            <code>(venv) $ flask --help</code>
+            Sesja powłoki Pythona w kontekście aplikacji
+            <code>(venv) $ flask shell</code>
+            Opcje wiersza poleceń polecenia <em>flask run</em>
+            <code>(venv) $ flask run --help</code>
+            Adres interfejsu sieciowego na jakim serwer nasłuchuje połączeń od klientów:<br>
+            - domyślnie 127.0.0.1 (localhost), na tym samym komputerze
+            <code>(venv) $ flask run</code>
+            - w całej sieci, serwer widoczny pod adresem komputera
+            na którym został uruchomiony <em>http://a.b.c.d:5000</em>
+            <code>(venv) $ flask run --host 0.0.0.0</code>
+        </p>
+
+        <h2>Cykl żądanie - odpowiedź</h2>
+        <p>
+            Konteksty umożliwiają Flaskowi globalne udostępnianie wątkowi pewnych zmiennych
+            bez ingerencji w inne wątki, tu na przykładzie obiektu <em>request</em>
+<pre>
+@app.route('/browser')
+def browser():
+    user_agent = request.headers.get('User-Agent')
+    return f"&lt;p&gt;Twoją przeglądarką jest {user_agent}&lt;/p&gt;"
+</pre>
+            <hr>
+            <a href="https://stackoverflow.com/questions/20036520/what-is-the-purpose-of-flasks-context-stacks">
+                https://stackoverflow.com/questions/20036520/what-is-the-purpose-of-flasks-context-stacks
+            </a><br>
+            <a href="https://kronosapiens.github.io/blog/2014/08/14/understanding-contexts-in-flask.html">
+                https://kronosapiens.github.io/blog/2014/08/14/understanding-contexts-in-flask.html
+            </a><br>
+            <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">
+                https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+            </a>
+        </p>
     </article>
 </body>
 </html>
