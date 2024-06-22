@@ -87,12 +87,20 @@ from flask import Flask
 app = Flask(__name__)
 </pre>
             <code>__name__</code> powrzechnie używana wartość
+            <hr>
+            <a href="#">Git</a>
         </p>
 
 
         <h2>Trasy i funkcje widoku</h2>
-
-
+        <p>
+            Odwzorowanie adresów URL na funkcje Pythona (ang. <em lang="en">route</em>)
+<pre>
+@app.route('/')
+def index():
+    return "&lt;h1&gt;Hello, World!&lt;/h1&gt;"
+</pre>
+        </p>
     </article>
 </body>
 </html>
