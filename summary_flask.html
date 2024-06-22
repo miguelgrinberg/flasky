@@ -79,6 +79,7 @@
     <article>
         <h1>Podstawowa struktura aplikacji</h1>
 
+
         <h2>Inicjalizacja</h2>
         <p>
            <span>Instancja aplikacji </span> jest obiektem klasy <span>Flask</span>
@@ -87,10 +88,10 @@ from flask import Flask
 app = Flask(__name__)
 </pre>
             <code>__name__</code> powrzechnie używana wartość
-            <hr>
-            <a href="#">Git</a>
         </p>
-
+        <hr>
+        <a href="#">Git</a>
+    
 
         <h2>Trasy i funkcje widoku</h2>
         <p>
@@ -100,7 +101,21 @@ app = Flask(__name__)
 def index():
     return "&lt;h1&gt;Hello, World!&lt;/h1&gt;"
 </pre>
+            Równoważny sposób rejestrowania funkcji widoku
+            <pre>app.add_url_rule('/', 'index', index)</pre>
         </p>
+        <p>
+            Składnik dynamiczny adresu
+<pre>
+@app.route('/user/&lt;name&gt;')
+def user(name):
+    return f"&lt;h1&gt;Hello, {name}!&lt;/h1&gt;"
+</pre>
+            Dynamiczne komponenty w trasach mogą mieć różne typy
+            <pre>&lt;name&gt; (lub &lt;string: name&gt; &mdash; wartość domyślna), &lt;int: id&gt;, &lt;float: f&gt;, &lt;path: p&gt;</pre>
+        </p>
+        <hr>
+        <a href="#">Git</a>
     </article>
 </body>
 </html>
