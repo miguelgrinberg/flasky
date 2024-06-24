@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Struktury sterujące</title>
+</head>
+<body>
+    <h1>
+        {% if user %}
+            Witaj {{ user }}!
+        {% else %}
+            Witaj, nieznajomy!
+        {% endif %}
+    </h1>
+    <ul>
+        {% for comment in comments %}
+        <li>{{ comment }}</li>
+        {% endfor %}
+    </ul>
+
+    {% macro render_comment(comment) %}
+        <li>{{ comment }}</li>
+    {% endmacro %}
+
+    <ul>
+        {% for comment in comments %}
+        {{ render_comment(comment) }}
+        {% endfor %}
+    </ul>
+
+    {% import 'macros.html' as macros %}
+    <ul>
+        {% for comment in comments %}
+            {{ macros.render_comment(comment) }}
+        {% endfor %}
+    </ul>
+    {% include 'common.html' %}
+
+</body>
+</html>

@@ -1,22 +1,38 @@
 from flask import Flask
-from flask import request
+from flask import request, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return "<h1>Hello, World!</h1>"
+    return render_template('index.html')
 
 
 @app.route('/user/<name>')
 def user(name):
-    return f"<h1>Hello, {name}!</h1>"
+    return render_template('user.html', name=name)
+
+
+@app.route('/tmp/user/<name>')
+def tmp(name):
+    comments = ["Aaa...", "Bbb....", "Ccc..."]
+    return render_template(
+        '/tmp/info.html',
+        user=name,
+        comments=comments
+    )
+
+
+@app.route('/tmp/index')
+def index_user():
+    return render_template('/tmp/user.html', user="One Two")
+
 
 @app.route('/browser')
 def browser():
     user_agent = request.headers.get('User-Agent')
-    request_headers = dict(request.headers)
-    headers = "<br>".join(map(': '.join, request_headers.items()))
+    # request_headers = dict(request.headers)
+    headers = "<br>".join(map(': '.join, request.headers.items()))
     return f"<p>Twoją przeglądarką jest <b>{user_agent}</b></p><h2>Header</h2><p>{headers}</p>"
 
