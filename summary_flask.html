@@ -182,10 +182,152 @@ def browser():
     <article>
         <h1>Szablony</h1>
 
-
-        <h2>Inicjalizacja</h2>
+        <h2>Mechanizm szablonów Jinja2</h2>
         <p>
+            Szablon to plik tekstowy odpowiedzi funkcji widoku. Domyślnie szablony są w
+            folderze <em>templates</em>
+<pre><i><u>file: templates/index.html</u></i>
+&lt;h1&gt;Hello, World!&lt;/h1&gt;
+</pre>
+<pre><i><u>file: templates/user.html</u></i>
+&lt;h1&gt;Hello, {{ name }}!&lt;/h1&gt;
+</pre>
         </p>
+
+        <h3>Renderowanie szablonów</h3>
+<pre><i><u>file: hello.py</u></i>
+from flask import <b>render_template</b>
+&hellip;
+@app.route('/')
+def index():
+    return <b>render_template('index.html')</b>
+@app.route('/user/&lt;name&gt;')
+def user(name):
+    return <b>render_template('user.html', name=name)</b>
+</pre>
+
+        <h3>Zmienne</h3>
+        <p>
+            Jinja2 rozpoznaje zmienne dowolnego typu, nawet złożonego
+<pre>
+&lt;p&gt;Wartość <b>{{ myobj.somemethod() }}, {{ mylist[id] }}</b>&lt;/p&gt;
+</pre>
+        </p>
+        <p>
+            Zmienne można modyfikować za pomocą <em>filtrów</em>
+<pre>
+&lt;p&gt;Hello <b>{{ name|capitalize }}</b>&lt;/p&gt;
+</pre>
+            Lista wybranych filtrów
+            <ul>
+                <li><strong>safe</strong> &mdash; renderuje wartość bez interpretowania znaków modyfikacji; interpretuje znaczniki HTML</li>
+                <li><strong>capitalize</strong> &mdash; zmienia pierwszy znak wartości na wielką literą, a pozostałe na małe</li>
+                <li><strong>lower</strong> &mdash; zmienia tekst na małe litery</li>
+                <li><strong>upper</strong> &mdash; zmienia tekst na duże litery</li>
+                <li><strong>title</strong> &mdash; pierwsza litera każdego słowa zapisana jest wielką literą</li>
+                <li><strong>trim</strong> &mdash; usuwa białe znaki z początku i końca</li>
+                <li><strong>striptags</strong> &mdash; przed renderowaniem usuwa z wartości wszystkie znaczniki HTML</li>
+                <li><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters">see doc</a></li>
+            </ul>
+        </p>
+
+        <h3>Struktury sterujące</h3>
+        <p>
+            <u>Instrukcja warunkowa</u>
+<pre>
+{% if user %}
+    Witaj {{ user }}!
+{% else %}
+    Witaj, nieznajomy!
+{% endif %}
+</pre>
+            <u>Pętla <em>for</em></u>
+<pre>
+&lt;ul&gt;
+    {% for comment in comments %}
+        &lt;li&gt;{{ comment }}&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;
+</pre>
+            <u>Makro w tym samym pliku</u>
+<pre>
+{% macro render_comment(comment) %}
+    &lt;li&gt;{{ comment }}&lt;/li&gt;
+{% endmacro %}
+
+&lt;ul&gt;
+    {% for comment in comments %}
+    {{ render_comment(comment) }}
+    {% endfor %}
+&lt;/ul&gt;
+</pre>
+            <u>Makro w osobnym pliku</u>
+<pre><i><u>file: templates/macros.html</u></i>
+{% macro render_comment(comment) %}
+    &lt;li&gt;{{ comment }}&lt;/li&gt;
+{% endmacro %}
+</pre>
+<pre><i><u>file: templates/index.html</u></i>
+{% import 'macros.html' as macros %}
+&lt;ul&gt;
+{% for comment in comments %}
+    {{ render_comment(comment) }}
+{% endfor %}
+&lt;/ul&gt;
+</pre>
+            <u>Wielokrotnie używany kod szablonu można zapisać w osobnym pliku i dołączać w innych miejscach</u>
+<pre>
+{% include 'common.html' %}
+</pre>
+            <u>Dziedziczenie szablonów</u><br>
+            Szablon podstawowy
+<pre><i><u>file: templates/base.html</u></i>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+{% block head %}
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;{% block title %}{% endblock %} - Moja aplikacja&lt;/title&gt;
+{% endblock %}
+&lt;/head&gt;
+&lt;body&gt;
+    {% block body %}
+    {% endblock %}
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+            Szablon wywiedziony (dziedziczący) z szablonu podstawowego
+<pre>
+{% extends "tmp/base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    &lt;style&gt;
+    &lt;/style&gt;
+{% endblock %}
+{% block body %}
+&lt;h1&gt;Witaj, {{ user }}?&lt;/h1&gt;
+{% endblock %}
+</pre>
+            Bloki mogą być zagnieżdżone. Funkcja <em>super()</em> odwołuje się do zawartości bloku w szablonie bazowym.
+        </p>
+
+
+        <h2>Integracja Bootstrap z Flask-Bootstrap</h2>
+        <p>
+            <a href="https://getbootstrap.com/">https://getbootstrap.com/</a><br>
+            Instalacja w wirtualnym środowisku
+            <code>
+                (venv) $ pip install flask-bootstrap
+            </code>
+            Inicjalizacja rozszerzenia Flask-Bootstrap
+<pre>
+from flask_bootstrap import Bootstrap
+&hellip;
+bootstrap = Bootstrap(app)
+</pre>
+        </p>
+
     </article>
 </body>
 </html>
