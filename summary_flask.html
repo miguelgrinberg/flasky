@@ -385,6 +385,78 @@ url_for('user', name='admin', page=2, version=1)  # '/user/admin?page=2&version=
 </pre>
         </p>
 
+
+        <h2>Pliki statyczne</h2>
+        <p>
+            Flask domyślnie szuka plików statycznych w podkatalogu <em>/static/</em>.
+            Przykładowo dodanie favicon
+<pre><i><u>file: templates/base.html</u></i>
+{% block head %}
+{{ super() }}
+&lt;link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon"&gt;
+{% endblock %}
+</pre>
+        </p>
+
+
+        <h2>Lokalizowanie dat i czasu za pomocą pakietu <em>Flask-Moment</em></h2>
+        <p>
+            <strong>Flask-moment</strong>, to rozszerzenie, które integruje
+            bibliotekę <em>Moment.js</em> z szablonami <em>Jinja2</em>. Do
+            działania potrzebuje jeszcze pakietu <em>jQuery.js</em>, który
+            dostarcza choćby Bootstrap.
+        </p>
+        <p>
+            Instalacja pakietu <a href="https://momentjs.com">Flask-moment</a>
+            <code>(venv) $ pip install flask-moment</code>
+        </p>
+        <p>
+            Inicjowanie pakietu
+<pre>
+from flask_moment import Moment
+app = Flask(__name__)
+moment = Moment(app)
+</pre>
+        </p>
+        <p>
+            Importowanie biblioteki <em>Moment.js</em> do szablonu.
+            <em>local('pl')</em> określa regionalizację.
+            Pakiet <em>Flask-moment</em> udostępnia szablonom obiekt <em>moment</em>
+            umożliwiający pracę ze znacznikami czasu.
+<pre><i><u>file: templates/base.html</u></i>
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{{ moment.locale('pl')}}
+{% endblock %}
+</pre>
+        </p>
+        <p>
+            Czas uniwersalny UTC jest przekazywany do szablonu
+<pre>
+from datetime import datetime, UTC
+@app.route('/time')
+def show_time():
+    return render_template('time.html', current_time=datetime.now(UTC))
+</pre>
+        a w szablonie jest renderowany na czas lokalny
+<pre>
+&lt;p&gt;Lokalna data i czas: {{ moment(current_time).format('LLL') }}.&lt;/p&gt;
+&lt;p&gt;To było {{ moment(current_time).fromNow(refresh=True) }}&lt;/p&gt;
+</pre>
+        </p>
+        <p>
+            <a href="https://blog.miguelgrinberg.com/post/it-s-time-for-a-change-datetime-utcnow-is-now-deprecated">
+                naive datetime object
+            </a><br>
+            <a href="https://en.wikipedia.org/wiki/ISO_3166-1">
+                kody regionalizacji
+            </a><br>
+            <a href="https://momentjs.com/docs/#/displaying/">
+                Moment.js formatowanie
+            </a>
+        </p>
+
     </article>
 </body>
 </html>

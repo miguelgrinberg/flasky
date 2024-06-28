@@ -1,9 +1,12 @@
 from flask import Flask
 from flask import request, render_template
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment
+from datetime import datetime, UTC
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
 
 
 @app.route('/')
@@ -47,3 +50,8 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
+
+
+@app.route('/time')
+def show_time():
+    return render_template('time.html', current_time=datetime.now(UTC))

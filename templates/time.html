@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Time{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Hello!</h1>
+        <p>Lokalna data i czas: {{ moment(current_time).format('LLL') }}.</p>
+        <p>To było {{ moment(current_time).fromNow(refresh=True) }}</p>
+    </div>
+</div>
+{% endblock %}
