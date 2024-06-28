@@ -124,6 +124,7 @@ def user(name):
             Uruchamianie serwera, najpierw ustawiamy zmienną środowiskową
             <code>(venv) $ export FLASK_APP=hello.py</code>
             <code>&gt; set FLASK_APP=hello.py  # Windows</code>
+            <code>PS &gt $Env:FLASK_APP="hello.py"  # Windows PowerShell</code>
             <code>(venv) $ flask run</code>
             Inna metoda uruchamiania serwera
             <pre>app.run()</pre>
@@ -136,6 +137,7 @@ def user(name):
             W trybie debugowania serwer Flaska domyślnie włącza dwa moduły serwera:
             <em lang="en">reloader</em> i <em lang="en">debuger</em>
             <code>(venv) $ export FLASK_DEBUG=1</code>
+            <code>PS &gt; $Env:FLASK_DEBUG=1  # Windows PowerShell</code>
             <code>(venv) $ flask run</code>
             W przypadku tradycyjnej metody uruchamiania serwera, moduł debugera włączamy>
             <pre>app.run(debug=True)</pre>
@@ -325,6 +327,61 @@ def user(name):
 from flask_bootstrap import Bootstrap
 &hellip;
 bootstrap = Bootstrap(app)
+</pre>
+        </p>
+        <p>
+            Aplikacja uzyskuje dostęp do szablonu bazowego Bootstrap'a
+<pre><i><u>file: templates/user.html</u></i>
+{% extends "bootstrap/base.html" %}
+{% block title %}My Title{% endblock %}
+{% block navbar %}&hellip;{% endblock %}
+{% block content %}&hellip;{% endblock %}
+&lt;!-- Bootstrap definiuje również inne bloki  --&gt;
+</pre>
+        </p>
+        <p>
+            Aby nie nadpisać domyślnej zawartości bloków Bootstrapa, należy
+            użyć <em>super()</em>
+<pre>
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+{{ super() }}
+&lt;script type="text/javascript" src="my-script.js"&gt;&lt;/script&gt;
+{% endblock %}
+</pre>
+        </p>
+
+
+        <h2>Niestandardowe strony błędów</h2>
+        <p>
+            Obsługa przykładowych błędów
+<pre>
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+</pre>
+        </p>
+        <p>
+            Aby nie powielać kodu, strony <em>404.html</em> i <em>500.html</em>
+            mogą dziedziczyć z szablonu bazowego
+            dla całego serwisu <em>template/base.html</em>, a ten z kolei powinien
+            dziedziczyć z szablonu bazowego Bootstrapa <em>bootstrap/base.html</em>.
+        </p>
+
+
+        <h2>Łącza</h2>
+        <p>
+            Funkcja <em>url_for()</em> generuje adres URL na podstawie
+            informacji przechowywanych w mapie adresów.
+<pre>
+url_for('index')  # '/'
+url_for('index', _external=True)  # 'http://localhost:5000/'
+url_for('user', name='janusz', _external=True)  # http://localhost:5000/user/janusz
+url_for('user', name='admin', page=2, version=1)  # '/user/admin?page=2&version=1'
 </pre>
         </p>
 
