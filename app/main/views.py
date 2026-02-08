@@ -6,7 +6,7 @@ from . import main
 from .forms import EditProfileForm, EditProfileAdminForm, PostForm,\
     CommentForm
 from .. import db
-from ..models import Permission, Role, User, Post, Comment
+from ..models import Permission, Role, User, Post, Comment, Bookmark
 from ..decorators import admin_required, permission_required
 
 
@@ -276,3 +276,40 @@ def moderate_disable(id):
     db.session.commit()
     return redirect(url_for('.moderate',
                             page=request.args.get('page', 1, type=int)))
+
+
+@main.route('/bookmark/<int:id>')
+@login_required
+def bookmark(id):
+    post = Post.query.get_or_404(id)
+    if current_user.is_bookmarking(post):
+        flash('You have already bookmarked this post.')
+        return redirect(url_for('.post', id=id))
+    current_user.bookmark(post)
+    db.session.commit()
+    flash('You have bookmarked this post.')
+    return redirect(url_for('.post', id=id))
+
+
+@main.route('/unbookmark/<int:id>')
+@login_required
+def unbookmark(id):
+    post = Post.query.get_or_404(id)
+    if not current_user.is_bookmarking(post):
+        flash('You have not bookmarked this post.')
+        return redirect(url_for('.post', id=id))
+    current_user.unbookmark(post)
+    db.session.commit()
+    flash('You have unbookmarked this post.')
+    return redirect(url_for('.post', id=id))
+
+
+@main.route('/bookmarks')
+@login_required
+def bookmarks():
+    page = request.args.get('page', 1, type=int)
+    pagination = current_user.bookmarked_posts.order_by(Bookmark.timestamp.desc()).paginate(
+        page=page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
+    posts = pagination.items
+    return render_template('bookmarks.html', posts=posts, pagination=pagination)

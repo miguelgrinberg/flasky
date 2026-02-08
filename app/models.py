@@ -106,6 +106,8 @@ class User(UserMixin, db.Model):
                                 lazy='dynamic',
                                 cascade='all, delete-orphan')
     comments = db.relationship('Comment', backref='author', lazy='dynamic')
+    bookmarks = db.relationship('Bookmark', backref='user', lazy='dynamic',
+                                cascade='all, delete-orphan')
 
     @staticmethod
     def add_self_follows():
@@ -240,6 +242,27 @@ class User(UserMixin, db.Model):
         return Post.query.join(Follow, Follow.followed_id == Post.author_id)\
             .filter(Follow.follower_id == self.id)
 
+    def bookmark(self, post):
+        if not self.is_bookmarking(post):
+            b = Bookmark(user=self, post=post)
+            db.session.add(b)
+
+    def unbookmark(self, post):
+        b = self.bookmarks.filter_by(post_id=post.id).first()
+        if b:
+            db.session.delete(b)
+
+    def is_bookmarking(self, post):
+        if post.id is None:
+            return False
+        return self.bookmarks.filter_by(
+            post_id=post.id).first() is not None
+
+    @property
+    def bookmarked_posts(self):
+        return Post.query.join(Bookmark, Bookmark.post_id == Post.id)\
+            .filter(Bookmark.user_id == self.id)
+
     def to_json(self):
         json_user = {
             'url': url_for('api.get_user', id=self.id),
@@ -294,6 +317,8 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
+    bookmarkers = db.relationship('Bookmark', backref='post', lazy='dynamic',
+                                  cascade='all, delete-orphan')
 
     @staticmethod
     def on_changed_body(target, value, oldvalue, initiator):
@@ -365,3 +390,10 @@ class Comment(db.Model):
 
 
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
+
+
+class Bookmark(db.Model):
+    __tablename__ = 'bookmarks'
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)

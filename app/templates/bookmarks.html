@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Flasky - My Bookmarks{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>My Bookmarks</h1>
+</div>
+{% include '_posts.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.bookmarks') }}
+</div>
+{% endif %}
+{% endblock %}
