@@ -182,6 +182,11 @@ def unfollow(username):
     if user is None:
         flash('Invalid user.')
         return redirect(url_for('.index'))
+        
+    if user == current_user:
+        flash('You cannot unfollow yourself.')
+        return redirect(url_for('.user', username=username))
+
     if not current_user.is_following(user):
         flash('You are not following this user.')
         return redirect(url_for('.user', username=username))
