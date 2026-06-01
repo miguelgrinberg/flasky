@@ -32,6 +32,14 @@
                 <a href="{{ url_for('.post', id=post.id) }}#comments">
                     <span class="label label-primary">{{ post.comments.count() }} Comments</span>
                 </a>
+
+                <span style="margin-left: 15px; color: #777; font-size: 12px;">Download post:</span>
+                <a href="{{ url_for('.export_posts', format_type='pdf', post_id=post.id) }}" style="text-decoration: none;">
+                    <span class="label label-danger" style="background-color: #d9534f;">PDF</span>
+                </a>
+                <a href="{{ url_for('.export_posts', format_type='json', post_id=post.id) }}" style="text-decoration: none;">
+                    <span class="label label-info" style="background-color: #5bc0de;">JSON</span>
+                </a>
             </div>
         </div>
     </li>

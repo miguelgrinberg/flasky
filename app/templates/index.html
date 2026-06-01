@@ -13,6 +13,39 @@
     {{ wtf.quick_form(form) }}
     {% endif %}
 </div>
+
+<div class="panel panel-default" style="margin-top: 25px; margin-bottom: 15px; border-radius: 4px;">
+    <div class="panel-body" style="background-color: #fcfcfc;">
+        <form method="GET" action="{{ url_for('.index') }}" class="form-inline" style="margin: 0;">
+
+            <div class="form-group">
+                <input type="text" name="search" class="form-control" placeholder="Search posts..." value="{{ search_query or '' }}" style="min-width: 250px;">
+            </div>
+
+            <div class="form-group" style="margin-left: 10px;">
+                <select name="sort_by" class="form-control" onchange="this.form.submit()">
+                    <option value="latest" {% if sort_by == 'latest' %}selected{% endif %}>Newest first</option>
+                    <option value="oldest" {% if sort_by == 'oldest' %}selected{% endif %}>Oldest first</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-left: 5px;">Search</button>
+            {% if search_query or sort_by != 'latest' %}
+                <a href="{{ url_for('.index') }}" class="btn btn-default" style="margin-left: 2px;">Reset</a>
+            {% endif %}
+
+            <div class="pull-right" style="padding-top: 2px;">
+                <span style="margin-right: 8px; font-weight: bold; color: #666; font-size: 13px;">Export current feed:</span>
+                <div class="btn-group" role="group">
+                    <a href="{{ url_for('.export_posts', format_type='csv', search=search_query, sort_by=sort_by) }}" class="btn btn-success btn-sm" title="Export to CSV">CSV</a>
+                    <a href="{{ url_for('.export_posts', format_type='json', search=search_query, sort_by=sort_by) }}" class="btn btn-info btn-sm" title="Export to JSON">JSON</a>
+                    <a href="{{ url_for('.export_posts', format_type='pdf', search=search_query, sort_by=sort_by) }}" class="btn btn-danger btn-sm" title="Export to PDF">PDF</a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
 <div class="post-tabs">
     <ul class="nav nav-tabs">
         <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">All</a></li>
@@ -24,7 +57,7 @@
 </div>
 {% if pagination %}
 <div class="pagination">
-    {{ macros.pagination_widget(pagination, '.index') }}
+    {{ macros.pagination_widget(pagination, '.index', search=search_query, sort_by=sort_by) }}
 </div>
 {% endif %}
 {% endblock %}

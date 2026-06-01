@@ -1,13 +1,14 @@
-from flask import render_template, redirect, url_for, abort, flash, request,\
-    current_app, make_response
+from flask import render_template, redirect, url_for, abort, flash, request, \
+    current_app, make_response, Response
 from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm, PostForm,\
+from .forms import EditProfileForm, EditProfileAdminForm, PostForm, \
     CommentForm
 from .. import db
 from ..models import Permission, Role, User, Post, Comment
 from ..decorators import admin_required, permission_required
+from app.services import PostService, ExportContext, CSVExportStrategy, JSONExportStrategy, PDFExportStrategy
 
 
 @main.after_app_request
@@ -41,20 +42,82 @@ def index():
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('.index'))
+
     page = request.args.get('page', 1, type=int)
+    search_query = request.args.get('search', '')
+    sort_by = request.args.get('sort_by', 'latest')
+
     show_followed = False
     if current_user.is_authenticated:
         show_followed = bool(request.cookies.get('show_followed', ''))
+
     if show_followed:
-        query = current_user.followed_posts
+        base_query = current_user.followed_posts
     else:
-        query = Post.query
-    pagination = query.order_by(Post.timestamp.desc()).paginate(
+        base_query = Post.query
+
+    query = PostService.get_filtered_posts(search_query=search_query, sort_by=sort_by)
+
+    if show_followed:
+        query = query.filter(Post.id.in_(base_query.with_entities(Post.id)))
+
+    pagination = query.paginate(
         page=page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
+
     return render_template('index.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination)
+                           show_followed=show_followed, pagination=pagination,
+                           search_query=search_query, sort_by=sort_by)
+
+
+@main.route('/export/<format_type>', methods=['GET'])
+def export_posts(format_type):
+    """Route handles Strategy Pattern logic for feed or single post export."""
+    post_id = request.args.get('post_id', type=int)
+
+    if post_id:
+        post = Post.query.get_or_404(post_id)
+        posts = [post]
+        filename = f'flasky_post_{post_id}.{format_type}'
+    else:
+        search_query = request.args.get('search', '')
+        sort_by = request.args.get('sort_by', 'latest')
+        show_followed = False
+
+        if current_user.is_authenticated:
+            show_followed = bool(request.cookies.get('show_followed', ''))
+
+        query = PostService.get_filtered_posts(search_query=search_query, sort_by=sort_by)
+
+        if show_followed:
+            base_query = current_user.followed_posts
+            query = query.filter(Post.id.in_(base_query.with_entities(Post.id)))
+
+        posts = query.all()
+        filename = f'flasky_export.{format_type}'
+
+    if not posts:
+        flash('No posts available for export.')
+        return redirect(url_for('.index'))
+
+    if format_type == 'json':
+        context = ExportContext(JSONExportStrategy())
+        mimetype = 'application/json'
+    elif format_type == 'pdf':
+        context = ExportContext(PDFExportStrategy())
+        mimetype = 'application/pdf'
+    else:
+        context = ExportContext(CSVExportStrategy())
+        mimetype = 'text/csv'
+
+    file_data = context.execute_export(posts)
+
+    return Response(
+        file_data,
+        mimetype=mimetype,
+        headers={"Content-disposition": f"attachment; filename={filename}"}
+    )
 
 
 @main.route('/user/<username>')
