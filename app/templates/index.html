@@ -24,8 +24,9 @@
 
             <div class="form-group" style="margin-left: 10px;">
                 <select name="sort_by" class="form-control" onchange="this.form.submit()">
-                    <option value="latest" {% if sort_by == 'latest' %}selected{% endif %}>Newest first</option>
+                    <option value="latest" {% if sort_by == 'latest' %}selected{% endif %}>Latest first</option>
                     <option value="oldest" {% if sort_by == 'oldest' %}selected{% endif %}>Oldest first</option>
+                    <option value="popular" {% if sort_by == 'popular' %}selected{% endif %}>Popular first</option>
                 </select>
             </div>
 
