@@ -1,7 +1,28 @@
 from datetime import datetime
 import hashlib
 from werkzeug.security import generate_password_hash, check_password_hash
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+try:
+    from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+except ImportError:
+    # itsdangerous 2.0+ removed TimedJSONWebSignatureSerializer
+    from itsdangerous import URLSafeTimedSerializer
+    from itsdangerous.exc import SignatureExpired, BadSignature
+
+    class Serializer:
+        def __init__(self, secret_key, expires_in=3600):
+            self.secret_key = secret_key
+            self.expires_in = expires_in
+            self._s = URLSafeTimedSerializer(secret_key)
+
+        def dumps(self, data):
+            return self._s.dumps(data, salt='flasky-compat').encode('utf-8')
+
+        def loads(self, token):
+            if isinstance(token, bytes):
+                token = token.decode('utf-8')
+            return self._s.loads(
+                token, salt='flasky-compat', max_age=self.expires_in
+            )
 from markdown import markdown
 import bleach
 from flask import current_app, request, url_for
@@ -365,3 +386,44 @@ class Comment(db.Model):
 
 
 db.event.listen(Comment.body, 'set', Comment.on_changed_body)
+
+# ── Association table: many-to-many between Post and Tag ──
+post_tags = db.Table(
+    'post_tags',
+    db.Column('post_id', db.Integer, db.ForeignKey('posts.id'), primary_key=True),
+    db.Column('tag_id',  db.Integer, db.ForeignKey('tags.id'),  primary_key=True),
+)
+
+
+class Tag(db.Model):
+    """A label that can be applied to one or more blog posts."""
+
+    __tablename__ = 'tags'
+
+    id   = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True, index=True, nullable=False)
+
+    posts = db.relationship(
+        'Post',
+        secondary=post_tags,
+        backref=db.backref('tags', lazy='dynamic'),
+        lazy='dynamic',
+    )
+
+    def to_json(self):
+        return {
+            'id':        self.id,
+            'name':      self.name,
+            'url':       url_for('api.get_tag',      id=self.id, _external=True),
+            'posts_url': url_for('api.get_tag_posts', id=self.id, _external=True),
+        }
+
+    @staticmethod
+    def from_json(json_data):
+        name = (json_data.get('name') or '').strip()
+        if not name:
+            raise ValidationError('Tag must have a name.')
+        return Tag(name=name)
+
+    def __repr__(self):
+        return f'<Tag {self.name!r}>'
